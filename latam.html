@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LATAM Expertise | Awasero - Silicon Valley Experience, Latin American Roots</title>
+  <meta name="description" content="Awasero combines deep Latin American expertise with Silicon Valley experience. Born in Caracas, now in Miami, we bridge the best of both worlds for founders.">
+  <link rel="canonical" href="https://awasero.com/latam">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://awasero.com/latam">
+  <meta property="og:title" content="LATAM Expertise - Silicon Valley Experience, Latin American Roots">
+  <meta property="og:description" content="The best of both worlds: Silicon Valley innovation methodologies with Latin American talent and hustle.">
+  <meta name="theme-color" content="#00040C">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Instrument Serif', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'brand': {
+              'dark': '#00040C',
+              'black': '#111111',
+              'white': '#ffffff',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#00040C] text-white antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 transition-all duration-500" id="main-nav">
+    <div class="absolute inset-0 bg-[#00040C]/90 backdrop-blur-xl border-b border-white/[0.06]"></div>
+    <div class="container mx-auto px-6 lg:px-16 py-4 relative">
+      <div class="flex items-center justify-between">
+        <a href="/" class="group flex items-center gap-3">
+          <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+          <span class="hidden sm:block font-body text-lg font-medium tracking-tight text-white">awasero</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="/partners" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">Partners</a>
+          <a href="/investors" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">Investors</a>
+          <a href="/portfolio" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">Portfolio</a>
+          <a href="/latam" class="nav-link text-[13px] tracking-wide font-body font-medium text-white transition-colors duration-200">LATAM</a>
+          <a href="/about" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">About</a>
+          <a href="/events" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">Events</a>
+          <a href="mailto:hello@awasero.com" class="ml-4 px-5 py-2.5 bg-white text-[#00040C] text-[13px] tracking-wide font-body font-semibold hover:bg-white/90 transition-all duration-200">Get in Touch</a>
+        </div>
+
+        <button class="lg:hidden text-white/70 hover:text-white transition-colors" id="mobile-menu-toggle">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="max-w-4xl">
+        <span class="font-mono text-xs text-white/40 tracking-wider mb-6 block">OUR ADVANTAGE</span>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-7xl leading-[1.05] mb-8">
+          Silicon Valley <em>Mindset</em>.<br>
+          Latin American <em>Hustle</em>.
+        </h1>
+        <p class="font-body text-lg text-white/50 max-w-2xl leading-relaxed">
+          We bring together the best of both worlds: world-class engineering talent from Latin America
+          combined with Silicon Valley methodologies and investor networks. Born in Caracas,
+          now headquartered in Miami, connected to the Bay Area.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Silicon Valley Experience -->
+  <section class="py-20 lg:py-32 border-t border-white/[0.06]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div>
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">SILICON VALLEY DNA</span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+            Bay Area <em>Experience</em>
+          </h2>
+        </div>
+        <div class="space-y-6">
+          <p class="font-body text-white/50 leading-relaxed">
+            Our leadership team has worked at and with Silicon Valley's most innovative companies.
+            We've seen what works and what doesn't at every stage of startup growth, from
+            pre-seed to IPO.
+          </p>
+          <p class="font-body text-white/50 leading-relaxed">
+            This experience informs everything we do: how we approach product development,
+            how we structure equity deals, how we think about scalability, and how we
+            connect founders with the right investors.
+          </p>
+          <p class="font-body text-white leading-relaxed">
+            We don't just build software. We apply Silicon Valley's best practices to
+            help you build a venture-scale company.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Bring Section -->
+  <section class="py-20 lg:py-32 bg-white/[0.01]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="max-w-3xl mb-16">
+        <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">FROM THE VALLEY</span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+          Silicon Valley <em>Playbook</em>
+        </h2>
+        <p class="font-body text-white/50 leading-relaxed">
+          Methodologies and connections that typically only exist in San Francisco and
+          Palo Alto, now available to founders everywhere.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Lean Startup Methodology</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            Build-measure-learn cycles that validate assumptions quickly.
+            Ship MVPs fast, get real user feedback, iterate based on data.
+          </p>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Investor Network</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            Warm introductions to VCs and angels who invest in LATAM-connected
+            startups. Direct relationships built over years in the ecosystem.
+          </p>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Growth Engineering</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            The same growth frameworks used by hypergrowth startups.
+            Data-driven experimentation, conversion optimization, scalable systems.
+          </p>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Modern Tech Stack</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            The same tools and technologies used by top Silicon Valley startups.
+            Cloud-native, scalable architectures built for growth.
+          </p>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Best Practices</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            Equity structures, vesting schedules, cap table management, and
+            governance practices that investors expect and understand.
+          </p>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl mb-3">Global Mindset</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed">
+            Build products for global markets from day one. Localization,
+            internationalization, and multi-market launch strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATAM Advantage -->
+  <section class="py-20 lg:py-32 border-t border-white/[0.06]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div>
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">LATIN AMERICAN ROOTS</span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+            The LATAM <em>Advantage</em>
+          </h2>
+        </div>
+        <div class="space-y-6">
+          <p class="font-body text-white/50 leading-relaxed">
+            Latin America has produced some of the world's most resilient entrepreneurs and
+            talented engineers. When you grow up navigating economic volatility, political
+            uncertainty, and infrastructure challenges, you develop a different kind of resourcefulness.
+          </p>
+          <p class="font-body text-white/50 leading-relaxed">
+            Our team embodies this spirit. We know how to do more with less, move fast when
+            needed, and maintain quality when resources are constrained. These aren't just
+            soft skills — they translate directly into how we build software and companies.
+          </p>
+          <p class="font-body text-white leading-relaxed">
+            Plus, LATAM talent offers exceptional value: senior engineers with US-quality
+            skills at rates that extend your runway significantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATAM Benefits -->
+  <section class="py-20 lg:py-32 bg-white/[0.01]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="max-w-3xl mb-16">
+        <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">WHY LATAM</span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+          Strategic <em>Benefits</em>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <h3 class="font-display text-2xl mb-4">Time Zone Alignment</h3>
+          <p class="font-body text-white/50 leading-relaxed mb-4">
+            Working with teams in US time zones means real-time collaboration.
+            No 12-hour delays waiting for responses. Morning standups, same-day
+            code reviews, and continuous communication.
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">EST Compatible</span>
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">PST Overlap</span>
+          </div>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <h3 class="font-display text-2xl mb-4">Cultural Proximity</h3>
+          <p class="font-body text-white/50 leading-relaxed mb-4">
+            Latin American engineers share cultural context with US markets.
+            We understand American business culture, consumer behavior, and
+            user expectations intuitively.
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">US Market Focus</span>
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">Bilingual Teams</span>
+          </div>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <h3 class="font-display text-2xl mb-4">Cost Efficiency</h3>
+          <p class="font-body text-white/50 leading-relaxed mb-4">
+            World-class engineering talent at rates 40-60% lower than US equivalents.
+            This isn't about cheap labor — it's about getting more runway and
+            higher quality for your investment.
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">Extended Runway</span>
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">Senior Talent</span>
+          </div>
+        </div>
+
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <h3 class="font-display text-2xl mb-4">Talent Depth</h3>
+          <p class="font-body text-white/50 leading-relaxed mb-4">
+            Strong engineering education systems across Latin America produce
+            thousands of skilled developers annually. Access to talent that's
+            increasingly hard to find in saturated US markets.
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">10+ Years Avg Experience</span>
+            <span class="px-2 py-1 bg-white/[0.04] font-mono text-xs text-white/50">Deep Bench</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Miami as Hub -->
+  <section class="py-20 lg:py-32 border-t border-white/[0.06]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">THE BRIDGE</span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+            Miami: Gateway to <em>Both Worlds</em>
+          </h2>
+          <p class="font-body text-white/50 leading-relaxed mb-8">
+            Our Miami headquarters isn't just a convenient location — it's strategic.
+            Miami has become the nexus of LATAM and US tech ecosystems, with growing
+            VC presence, founder communities, and cross-border business infrastructure.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-body font-medium mb-1">Growing Tech Hub</h4>
+              <p class="font-body text-sm text-white/40">Major tech companies and VCs are establishing Miami presence. We're at the center of this ecosystem shift.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-body font-medium mb-1">LATAM Gateway</h4>
+              <p class="font-body text-sm text-white/40">Direct flights to every major Latin American city. Easy coordination between US operations and LATAM talent.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-body font-medium mb-1">Business-Friendly</h4>
+              <p class="font-body text-sm text-white/40">No state income tax, strong IP protections, and established infrastructure for international business.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-1">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-body font-medium mb-1">Diverse Ecosystem</h4>
+              <p class="font-body text-sm text-white/40">Access to founders, investors, and talent from across the Americas, all in one city.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 lg:py-32 bg-white/[0.01]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl mb-6">
+          Get the Best of <em>Both Worlds</em>
+        </h2>
+        <p class="font-body text-white/50 leading-relaxed mb-10">
+          Whether you're a founder looking for a technical partner or an investor
+          seeking LATAM-connected deal flow, we'd love to talk.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/partners" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#00040C] font-body font-semibold text-sm tracking-wide hover:bg-white/90 transition-all duration-200">
+            Partner With Us
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a href="/investors" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-body font-semibold text-sm tracking-wide hover:bg-white/[0.05] transition-all duration-200">
+            Invest With Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 lg:py-16 bg-[#00040C] border-t border-white/[0.06]">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+          <span class="font-body text-sm font-medium">awasero</span>
+        </div>
+        <div class="flex gap-8 font-body text-sm text-white/40">
+          <a href="/partners" class="hover:text-white transition-colors">Partners</a>
+          <a href="/investors" class="hover:text-white transition-colors">Investors</a>
+          <a href="/portfolio" class="hover:text-white transition-colors">Portfolio</a>
+          <a href="/latam" class="hover:text-white transition-colors">LATAM</a>
+          <a href="/about" class="hover:text-white transition-colors">About</a>
+          <a href="/events" class="hover:text-white transition-colors">Events</a>
+        </div>
+        <p class="font-body text-xs text-white/25">&copy; 2024 Awasero</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
