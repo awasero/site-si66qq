@@ -1,32 +1,34 @@
 /* Awasero - Venture Software House
-   Design System: Monochrome Sophistication
-   Colors: Pure black and white contrast
-   Typography: Cormorant Garamond (display) + Space Grotesk (body)
+   Design System: Refined Minimalism
+   Brand Color: #00040C (brand dark)
+   Typography: Instrument Serif (display) + Inter (body) + JetBrains Mono (mono)
 */
 
 /* =========================================
    CSS Variables
    ========================================= */
 :root {
+  --color-brand-dark: #00040C;
   --color-accent: #ffffff;
   --color-accent-dim: rgba(255, 255, 255, 0.8);
   --color-accent-muted: rgba(255, 255, 255, 0.5);
-  --color-bg-primary: #000000;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #050505;
-  --color-bg-card: #111111;
+  --color-bg-primary: #00040C;
+  --color-bg-secondary: rgba(255, 255, 255, 0.02);
+  --color-bg-tertiary: rgba(255, 255, 255, 0.01);
+  --color-bg-card: rgba(255, 255, 255, 0.02);
   --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.7);
-  --color-text-muted: rgba(255, 255, 255, 0.4);
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.3);
+  --color-text-secondary: rgba(255, 255, 255, 0.5);
+  --color-text-muted: rgba(255, 255, 255, 0.3);
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --transition-fast: 150ms ease;
-  --transition-normal: 300ms ease;
-  --transition-slow: 500ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
 }
 
 /* =========================================
@@ -60,11 +62,19 @@ body {
   font-family: var(--font-body);
 }
 
+.font-mono {
+  font-family: var(--font-mono);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.1;
+}
+
+em, i {
+  font-style: italic;
 }
 
 /* =========================================
@@ -84,8 +94,8 @@ h1, h2, h3, h4, h5, h6 {
    Custom Scrollbar
    ========================================= */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -93,18 +103,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) var(--color-bg-primary);
+  scrollbar-color: rgba(255, 255, 255, 0.2) var(--color-bg-primary);
 }
 
 /* =========================================
@@ -118,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -132,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 /* =========================================
@@ -141,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -152,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -165,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0) translateX(-50%);
   }
   50% {
-    transform: translateY(-10px) translateX(-50%);
+    transform: translateY(-8px) translateX(-50%);
   }
 }
 
@@ -178,54 +188,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-fade-in-delay-1 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.15s forwards;
+  animation: fadeIn 0.6s ease-out 0.1s forwards;
 }
 
 .animate-fade-in-delay-2 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.3s forwards;
+  animation: fadeIn 0.6s ease-out 0.2s forwards;
 }
 
 .animate-fade-in-delay-3 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.45s forwards;
+  animation: fadeIn 0.6s ease-out 0.3s forwards;
 }
 
 .animate-fade-in-delay-4 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.6s forwards;
+  animation: fadeIn 0.6s ease-out 0.4s forwards;
 }
 
 .animate-fade-in-delay-5 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.75s forwards;
+  animation: fadeIn 0.6s ease-out 0.5s forwards;
 }
 
 .animate-float {
@@ -239,14 +228,14 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 /* =========================================
    Navigation
    ========================================= */
 #main-nav.scrolled {
-  background-color: rgba(5, 5, 5, 0.95);
+  background-color: rgba(0, 4, 12, 0.98);
 }
 
 .nav-link {
@@ -256,7 +245,7 @@ input:focus-visible {
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 1px;
@@ -302,112 +291,6 @@ input:focus-visible {
 }
 
 /* =========================================
-   Buttons
-   ========================================= */
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-accent);
-  color: var(--color-bg-primary);
-  transition: all var(--transition-normal);
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  transform: translateY(100%);
-  transition: transform var(--transition-normal);
-}
-
-.btn-primary:hover::before {
-  transform: translateY(0);
-}
-
-.btn-secondary {
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  transition: all var(--transition-normal);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-accent);
-  color: var(--color-bg-primary);
-}
-
-/* =========================================
-   Cards
-   ========================================= */
-.card {
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-slow);
-}
-
-.card:hover {
-  border-color: var(--color-border-hover);
-  transform: translateY(-4px);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent,
-    var(--color-accent),
-    transparent
-  );
-  transform: scaleX(0);
-  transition: transform var(--transition-slow);
-}
-
-.card:hover::before {
-  transform: scaleX(1);
-}
-
-/* =========================================
-   Section Headers
-   ========================================= */
-.section-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.section-eyebrow::before,
-.section-eyebrow::after {
-  content: '';
-  width: 3rem;
-  height: 1px;
-  background-color: var(--color-accent-muted);
-}
-
-/* =========================================
-   FAQ Accordion
-   ========================================= */
-details summary {
-  list-style: none;
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-details[open] summary + div {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* =========================================
    Form Elements
    ========================================= */
 input[type="email"],
@@ -422,7 +305,7 @@ textarea {
 input[type="email"]:focus,
 input[type="text"]:focus,
 textarea:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-border-hover);
   outline: none;
 }
 
@@ -433,68 +316,18 @@ textarea::placeholder {
 }
 
 /* =========================================
-   Team Member Cards
+   FAQ Accordion
    ========================================= */
-.team-card {
-  position: relative;
+details summary {
+  list-style: none;
 }
 
-.team-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-  opacity: 0.8;
+details summary::-webkit-details-marker {
+  display: none;
 }
 
-.team-card::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background-color: var(--color-bg-secondary);
-}
-
-/* =========================================
-   Decorative Elements
-   ========================================= */
-.decorative-line {
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-}
-
-.decorative-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-accent);
-}
-
-/* =========================================
-   Gradient Text
-   ========================================= */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.7));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* =========================================
-   Shimmer Effect
-   ========================================= */
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+details[open] summary + div {
+  animation: fadeIn 0.2s ease-out;
 }
 
 /* =========================================
@@ -509,8 +342,8 @@ textarea::placeholder {
    ========================================= */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal.visible {
@@ -523,16 +356,16 @@ textarea::placeholder {
    ========================================= */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2.5rem !important;
+    font-size: 2.25rem !important;
   }
 
   h2 {
-    font-size: 2rem !important;
+    font-size: 1.875rem !important;
   }
 
   .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 
@@ -590,7 +423,7 @@ textarea::placeholder {
 }
 
 /* =========================================
-   Dark Mode (already dark, but ensuring)
+   Dark Mode (already dark)
    ========================================= */
 @media (prefers-color-scheme: dark) {
   :root {

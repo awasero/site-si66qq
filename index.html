@@ -60,9 +60,29 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Instrument Serif', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'brand': {
+              'dark': '#00040C',
+              'black': '#111111',
+              'white': '#ffffff',
+            }
+          }
+        }
+      }
+    }
+  </script>
 
   <!-- Schema.org WebSite -->
   <script type="application/ld+json">
@@ -370,42 +390,38 @@
 
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50 transition-all duration-500" id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="absolute inset-0 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5"></div>
-    <div class="container mx-auto px-6 lg:px-12 py-5 relative">
+    <div class="absolute inset-0 bg-[#00040C]/90 backdrop-blur-xl border-b border-white/[0.06]"></div>
+    <div class="container mx-auto px-6 lg:px-16 py-4 relative">
       <div class="flex items-center justify-between">
-        <a href="#" class="group flex items-center gap-3">
-          <div class="w-10 h-10 border border-[#ffffff] flex items-center justify-center relative overflow-hidden">
-            <span class="font-display text-xl text-[#ffffff] relative z-10">A</span>
-            <div class="absolute inset-0 bg-[#ffffff] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-            <span class="font-display text-xl text-[#050505] absolute z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">A</span>
-          </div>
-          <span class="font-display text-xl tracking-wide text-white/90">awasero</span>
+        <a href="#" class="group flex items-center gap-3" aria-label="Awasero Home">
+          <!-- Brand Symbol -->
+          <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+          <!-- Brand Wordmark -->
+          <span class="hidden sm:block font-body text-lg font-medium tracking-tight text-white">awasero</span>
         </a>
 
-        <div class="hidden lg:flex items-center gap-12">
-          <a href="#partners" class="nav-link text-sm tracking-wider uppercase font-body font-light text-white/60 hover:text-[#ffffff] transition-colors relative group">
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="#partners" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">
             Partners
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#ffffff] group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="#investors" class="nav-link text-sm tracking-wider uppercase font-body font-light text-white/60 hover:text-[#ffffff] transition-colors relative group">
+          <a href="#investors" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">
             Investors
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#ffffff] group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="#portfolio" class="nav-link text-sm tracking-wider uppercase font-body font-light text-white/60 hover:text-[#ffffff] transition-colors relative group">
+          <a href="#portfolio" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">
             Portfolio
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#ffffff] group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="#about" class="nav-link text-sm tracking-wider uppercase font-body font-light text-white/60 hover:text-[#ffffff] transition-colors relative group">
+          <a href="#about" class="nav-link text-[13px] tracking-wide font-body font-medium text-white/50 hover:text-white transition-colors duration-200">
             About
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#ffffff] group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="#contact" class="ml-4 px-6 py-3 border border-[#ffffff] text-[#ffffff] text-sm tracking-wider uppercase font-body hover:bg-[#ffffff] hover:text-[#050505] transition-all duration-300">
+          <a href="#contact" class="ml-4 px-5 py-2.5 bg-white text-[#00040C] text-[13px] tracking-wide font-body font-semibold hover:bg-white/90 transition-all duration-200">
             Let's Build
           </a>
         </div>
 
-        <button class="lg:hidden text-white/80 hover:text-[#ffffff] transition-colors" id="mobile-menu-toggle" aria-label="Toggle menu">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="lg:hidden text-white/70 hover:text-white transition-colors" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
@@ -414,89 +430,101 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 bg-[#050505] z-40 transform translate-x-full transition-transform duration-500 lg:hidden">
+  <div id="mobile-menu" class="fixed inset-0 bg-[#00040C] z-40 transform translate-x-full transition-transform duration-500 lg:hidden">
     <div class="absolute top-6 right-6">
-      <button class="text-white/80 hover:text-[#ffffff]" id="mobile-menu-close">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button class="text-white/70 hover:text-white" id="mobile-menu-close">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
-    <div class="flex flex-col items-center justify-center h-full gap-10">
-      <a href="#partners" class="mobile-nav-link font-display text-3xl text-white/80 hover:text-[#ffffff] transition-colors">Partners</a>
-      <a href="#investors" class="mobile-nav-link font-display text-3xl text-white/80 hover:text-[#ffffff] transition-colors">Investors</a>
-      <a href="#portfolio" class="mobile-nav-link font-display text-3xl text-white/80 hover:text-[#ffffff] transition-colors">Portfolio</a>
-      <a href="#about" class="mobile-nav-link font-display text-3xl text-white/80 hover:text-[#ffffff] transition-colors">About</a>
-      <a href="#contact" class="mt-6 px-10 py-4 border border-[#ffffff] text-[#ffffff] text-lg tracking-wider">Let's Build</a>
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <!-- Mobile Brand Symbol -->
+      <svg class="w-16 h-16 mb-8 opacity-20" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+      </svg>
+      <a href="#partners" class="mobile-nav-link font-display text-4xl text-white/80 hover:text-white transition-colors">Partners</a>
+      <a href="#investors" class="mobile-nav-link font-display text-4xl text-white/80 hover:text-white transition-colors">Investors</a>
+      <a href="#portfolio" class="mobile-nav-link font-display text-4xl text-white/80 hover:text-white transition-colors">Portfolio</a>
+      <a href="#about" class="mobile-nav-link font-display text-4xl text-white/80 hover:text-white transition-colors">About</a>
+      <a href="#contact" class="mt-8 px-8 py-4 bg-white text-[#00040C] text-base font-body font-semibold tracking-wide">Let's Build</a>
     </div>
   </div>
 
   <!-- Hero Section -->
-  <header class="relative min-h-screen flex items-center justify-center pt-20" id="hero" role="banner">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10 pointer-events-none"></div>
+  <header class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden" id="hero" role="banner">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#00040C] via-[#00040C]/95 to-[#00040C] z-10 pointer-events-none"></div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute top-1/4 left-10 w-px h-32 bg-gradient-to-b from-transparent via-[#ffffff]/30 to-transparent hidden lg:block"></div>
-    <div class="absolute bottom-1/4 right-10 w-px h-32 bg-gradient-to-b from-transparent via-[#ffffff]/30 to-transparent hidden lg:block"></div>
-    <div class="absolute top-1/3 right-20 w-32 h-px bg-gradient-to-r from-transparent via-[#ffffff]/20 to-transparent hidden lg:block"></div>
+    <!-- Large Background Brand Symbol -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] opacity-[0.03] pointer-events-none hidden lg:block z-0">
+      <svg class="w-full h-full" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+      </svg>
+    </div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-20">
-      <div class="max-w-5xl mx-auto">
-        <!-- Eyebrow -->
-        <div class="flex items-center gap-4 mb-8 justify-center lg:justify-start animate-fade-in">
-          <div class="w-12 h-px bg-[#ffffff]"></div>
-          <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">Venture Software House</span>
+    <div class="container mx-auto px-6 lg:px-16 relative z-20">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Column - Main Content -->
+        <div class="lg:col-span-7">
+          <!-- Eyebrow -->
+          <div class="flex items-center gap-3 mb-6 animate-fade-in">
+            <span class="font-mono text-xs text-white/40 tracking-wider">VENTURE SOFTWARE HOUSE</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="font-display text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8">
+            <span class="block text-white animate-fade-in">Your Industry</span>
+            <span class="block text-white animate-fade-in-delay-1">Expertise,</span>
+            <span class="block animate-fade-in-delay-2"><em class="text-white/60">Our Technical</em></span>
+            <span class="block animate-fade-in-delay-3"><em class="text-white/60">Excellence</em></span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="font-body text-base md:text-lg text-white/50 max-w-xl mb-10 leading-relaxed animate-fade-in-delay-4">
+            We partner with non-technical founders who have deep domain expertise.
+            Software developers who work for equity, becoming your technical co-founder.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-delay-5">
+            <a href="#contact" class="group px-7 py-3.5 bg-white text-[#00040C] font-body font-semibold text-sm tracking-wide hover:bg-white/90 transition-all duration-200 text-center">
+              Become a Partner
+            </a>
+            <a href="#portfolio" class="group px-7 py-3.5 border border-white/20 text-white/70 font-body font-medium text-sm tracking-wide hover:border-white/40 hover:text-white transition-all duration-200 text-center">
+              View Portfolio
+            </a>
+          </div>
         </div>
 
-        <!-- Main Headline -->
-        <h1 class="font-display text-5xl md:text-6xl lg:text-8xl font-semibold leading-[0.95] mb-8 text-center lg:text-left">
-          <span class="block animate-fade-in">Your Industry</span>
-          <span class="block text-[#ffffff] animate-fade-in-delay-1">Expertise,</span>
-          <span class="block animate-fade-in-delay-2">Our Technical</span>
-          <span class="block italic font-normal text-white/70 animate-fade-in-delay-3">Excellence</span>
-        </h1>
-
-        <!-- Subheadline -->
-        <p class="font-body text-lg md:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed text-center lg:text-left animate-fade-in-delay-4">
-          Awasero partners with non-technical founders who have deep domain expertise.
-          We provide <strong class="text-white/80">software developers who work for equity</strong>,
-          becoming your technical co-founder to build companies that matter.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start animate-fade-in-delay-5">
-          <a href="#contact" class="group relative px-10 py-4 bg-[#ffffff] text-[#050505] font-body font-semibold tracking-wide overflow-hidden text-center">
-            <span class="relative z-10">Become a Partner</span>
-            <div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-          </a>
-          <a href="#portfolio" class="group px-10 py-4 border border-white/20 text-white/80 font-body tracking-wide hover:border-[#ffffff] hover:text-[#ffffff] transition-all duration-300 text-center">
-            View Portfolio
-          </a>
-        </div>
-
-        <!-- Stats Row -->
-        <div class="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/10 animate-fade-in-delay-5">
-          <div class="text-center lg:text-left">
-            <div class="font-display text-4xl md:text-5xl text-[#ffffff] mb-2" data-count="15">15+</div>
-            <div class="font-body text-sm text-white/50 tracking-wide uppercase">Ventures Built</div>
-          </div>
-          <div class="text-center lg:text-left">
-            <div class="font-display text-4xl md:text-5xl text-[#ffffff] mb-2">$12M</div>
-            <div class="font-body text-sm text-white/50 tracking-wide uppercase">Value Created</div>
-          </div>
-          <div class="text-center lg:text-left">
-            <div class="font-display text-4xl md:text-5xl text-[#ffffff] mb-2">87%</div>
-            <div class="font-body text-sm text-white/50 tracking-wide uppercase">Success Rate</div>
+        <!-- Right Column - Stats -->
+        <div class="lg:col-span-5 animate-fade-in-delay-5">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/[0.02] border border-white/[0.06] p-6 lg:p-8">
+              <div class="font-display text-4xl lg:text-5xl text-white mb-1" data-count="15">15+</div>
+              <div class="font-body text-xs text-white/40 tracking-wide uppercase">Ventures Built</div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-6 lg:p-8">
+              <div class="font-display text-4xl lg:text-5xl text-white mb-1">$12M</div>
+              <div class="font-body text-xs text-white/40 tracking-wide uppercase">Value Created</div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-6 lg:p-8">
+              <div class="font-display text-4xl lg:text-5xl text-white mb-1">87%</div>
+              <div class="font-body text-xs text-white/40 tracking-wide uppercase">Success Rate</div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-6 lg:p-8">
+              <div class="font-display text-4xl lg:text-5xl text-white mb-1">3x</div>
+              <div class="font-body text-xs text-white/40 tracking-wide uppercase">Faster to Market</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-float">
-      <div class="flex flex-col items-center gap-3">
-        <span class="text-white/30 text-xs tracking-widest uppercase font-body">Scroll</span>
-        <div class="w-px h-12 bg-gradient-to-b from-[#ffffff] to-transparent"></div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-float">
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-white/20 text-[10px] tracking-widest uppercase font-mono">Scroll</span>
+        <div class="w-px h-10 bg-gradient-to-b from-white/30 to-transparent"></div>
       </div>
     </div>
   </header>
@@ -505,116 +533,115 @@
   <main role="main" id="main-content">
 
   <!-- Partners Section -->
-  <section id="partners" class="py-32 relative" aria-labelledby="partners-heading">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#080808] to-[#050505]"></div>
+  <section id="partners" class="py-24 lg:py-32 relative" aria-labelledby="partners-heading">
+    <div class="absolute inset-0 bg-[#00040C]"></div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
       <!-- Section Header -->
-      <div class="max-w-4xl mx-auto text-center mb-20">
-        <div class="flex items-center gap-4 justify-center mb-6">
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-          <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">For Founders</span>
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-        </div>
-        <h2 id="partners-heading" class="font-display text-4xl md:text-6xl font-semibold mb-6">
-          Partner With <span class="italic font-normal text-[#ffffff]">Awasero</span>
+      <div class="max-w-3xl mb-16 lg:mb-20">
+        <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">FOR FOUNDERS</span>
+        <h2 id="partners-heading" class="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
+          Partner with <em>Awasero</em>
         </h2>
-        <p class="font-body text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-          Are you a domain expert with a transformative vision? We provide the technical foundation
+        <p class="font-body text-base text-white/50 max-w-xl leading-relaxed">
+          Domain experts with transformative vision. We provide the technical foundation
           to build your company, working for equity instead of cash.
         </p>
       </div>
 
       <!-- Partnership Cards -->
-      <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+      <div class="grid lg:grid-cols-3 gap-6 mb-20">
         <!-- Card 1 -->
-        <article class="group relative bg-[#0a0a0a] border border-white/5 p-10 hover:border-[#ffffff]/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[#ffffff]/50 via-[#ffffff] to-[#ffffff]/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-
-          <div class="w-16 h-16 border border-[#ffffff]/30 flex items-center justify-center mb-8 group-hover:bg-[#ffffff]/10 transition-colors duration-300">
-            <svg class="w-8 h-8 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-            </svg>
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] p-8 hover:border-white/20 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 bg-white/[0.06] flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <span class="font-mono text-[10px] text-white/30 tracking-wider">01</span>
           </div>
 
-          <h3 class="font-display text-2xl mb-4">Technical Co-Founder</h3>
-          <p class="font-body text-white/50 leading-relaxed mb-6">
+          <h3 class="font-display text-2xl mb-3">Technical Co-Founder</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
             We become your technical co-founder, handling all software development, architecture decisions,
-            and technical strategy while you focus on domain expertise and business development.
+            and technical strategy.
           </p>
-          <ul class="space-y-3 font-body text-sm text-white/40">
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+          <ul class="space-y-2 font-body text-xs text-white/30">
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Full-stack development team
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Architecture & infrastructure
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               AI/ML capabilities
             </li>
           </ul>
         </article>
 
         <!-- Card 2 -->
-        <article class="group relative bg-[#0a0a0a] border border-white/5 p-10 hover:border-[#ffffff]/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[#ffffff]/50 via-[#ffffff] to-[#ffffff]/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-
-          <div class="w-16 h-16 border border-[#ffffff]/30 flex items-center justify-center mb-8 group-hover:bg-[#ffffff]/10 transition-colors duration-300">
-            <svg class="w-8 h-8 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] p-8 hover:border-white/20 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 bg-white/[0.06] flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <span class="font-mono text-[10px] text-white/30 tracking-wider">02</span>
           </div>
 
-          <h3 class="font-display text-2xl mb-4">Equity-Based Model</h3>
-          <p class="font-body text-white/50 leading-relaxed mb-6">
-            No upfront development costs. We invest our expertise, time, and resources in exchange for
-            equity, ensuring our success is directly tied to yours from day one.
+          <h3 class="font-display text-2xl mb-3">Equity-Based Model</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+            No upfront development costs. We invest our expertise and resources in exchange for
+            equity, ensuring aligned success.
           </p>
-          <ul class="space-y-3 font-body text-sm text-white/40">
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+          <ul class="space-y-2 font-body text-xs text-white/30">
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Zero upfront capital required
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Aligned incentives
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Long-term partnership
             </li>
           </ul>
         </article>
 
         <!-- Card 3 -->
-        <article class="group relative bg-[#0a0a0a] border border-white/5 p-10 hover:border-[#ffffff]/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[#ffffff]/50 via-[#ffffff] to-[#ffffff]/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-
-          <div class="w-16 h-16 border border-[#ffffff]/30 flex items-center justify-center mb-8 group-hover:bg-[#ffffff]/10 transition-colors duration-300">
-            <svg class="w-8 h-8 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] p-8 hover:border-white/20 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 bg-white/[0.06] flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <span class="font-mono text-[10px] text-white/30 tracking-wider">03</span>
           </div>
 
-          <h3 class="font-display text-2xl mb-4">Complete Team Access</h3>
-          <p class="font-body text-white/50 leading-relaxed mb-6">
-            Gain access to our full team of developers, designers, and growth specialists.
-            Scale your technical capabilities without the overhead of traditional hiring.
+          <h3 class="font-display text-2xl mb-3">Complete Team Access</h3>
+          <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+            Full team of developers, designers, and growth specialists.
+            Scale without traditional hiring overhead.
           </p>
-          <ul class="space-y-3 font-body text-sm text-white/40">
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+          <ul class="space-y-2 font-body text-xs text-white/30">
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Senior engineers & architects
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Product designers
             </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
               Growth & marketing support
             </li>
           </ul>
@@ -622,36 +649,35 @@
       </div>
 
       <!-- Partnership Process -->
-      <div class="max-w-5xl mx-auto">
-        <h3 class="font-display text-2xl text-center mb-12">How We Partner</h3>
-        <div class="grid md:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="w-14 h-14 border border-[#ffffff] flex items-center justify-center mx-auto mb-4">
-              <span class="font-display text-xl text-[#ffffff]">01</span>
-            </div>
-            <h4 class="font-body font-semibold mb-2">Discovery</h4>
-            <p class="font-body text-sm text-white/40">We explore your vision, validate the opportunity, and assess fit.</p>
+      <div class="border-t border-white/[0.06] pt-16">
+        <div class="flex flex-col lg:flex-row lg:items-start gap-12">
+          <div class="lg:w-1/3">
+            <h3 class="font-display text-2xl mb-4">How We Partner</h3>
+            <p class="font-body text-sm text-white/40 leading-relaxed">
+              A structured approach to building successful ventures together.
+            </p>
           </div>
-          <div class="text-center">
-            <div class="w-14 h-14 border border-[#ffffff] flex items-center justify-center mx-auto mb-4">
-              <span class="font-display text-xl text-[#ffffff]">02</span>
+          <div class="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <span class="font-mono text-2xl text-white/20 block mb-3">01</span>
+              <h4 class="font-body font-medium text-sm mb-2">Discovery</h4>
+              <p class="font-body text-xs text-white/40 leading-relaxed">Explore vision, validate opportunity, assess fit.</p>
             </div>
-            <h4 class="font-body font-semibold mb-2">Structure</h4>
-            <p class="font-body text-sm text-white/40">Define equity split, roles, and partnership terms.</p>
-          </div>
-          <div class="text-center">
-            <div class="w-14 h-14 border border-[#ffffff] flex items-center justify-center mx-auto mb-4">
-              <span class="font-display text-xl text-[#ffffff]">03</span>
+            <div>
+              <span class="font-mono text-2xl text-white/20 block mb-3">02</span>
+              <h4 class="font-body font-medium text-sm mb-2">Structure</h4>
+              <p class="font-body text-xs text-white/40 leading-relaxed">Define equity split, roles, and terms.</p>
             </div>
-            <h4 class="font-body font-semibold mb-2">Build</h4>
-            <p class="font-body text-sm text-white/40">Rapid MVP development with continuous iteration.</p>
-          </div>
-          <div class="text-center">
-            <div class="w-14 h-14 border border-[#ffffff] flex items-center justify-center mx-auto mb-4">
-              <span class="font-display text-xl text-[#ffffff]">04</span>
+            <div>
+              <span class="font-mono text-2xl text-white/20 block mb-3">03</span>
+              <h4 class="font-body font-medium text-sm mb-2">Build</h4>
+              <p class="font-body text-xs text-white/40 leading-relaxed">Rapid MVP with continuous iteration.</p>
             </div>
-            <h4 class="font-body font-semibold mb-2">Scale</h4>
-            <p class="font-body text-sm text-white/40">Grow together with ongoing technical leadership.</p>
+            <div>
+              <span class="font-mono text-2xl text-white/20 block mb-3">04</span>
+              <h4 class="font-body font-medium text-sm mb-2">Scale</h4>
+              <p class="font-body text-xs text-white/40 leading-relaxed">Grow with ongoing technical leadership.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -659,95 +685,87 @@
   </section>
 
   <!-- Investors Section -->
-  <section id="investors" class="py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[#080808]"></div>
+  <section id="investors" class="py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-white/[0.01]"></div>
 
-    <!-- Decorative Background -->
-    <div class="absolute top-0 right-0 w-1/2 h-full opacity-30">
-      <div class="absolute inset-0 bg-gradient-to-l from-[#ffffff]/10 to-transparent"></div>
-    </div>
-
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <!-- Left Column -->
         <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-px bg-[#ffffff]/50"></div>
-            <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">For Investors</span>
-          </div>
-          <h2 class="font-display text-4xl md:text-5xl font-semibold mb-6">
-            Invest in <span class="italic font-normal text-[#ffffff]">De-Risked</span> Ventures
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">FOR INVESTORS</span>
+          <h2 class="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
+            Invest in <em>De-Risked</em> Ventures
           </h2>
-          <p class="font-body text-lg text-white/60 leading-relaxed mb-8">
-            Awasero provides the technical foundation that early-stage startups need to succeed.
-            Our portfolio companies come with proven technical execution baked in.
+          <p class="font-body text-base text-white/50 leading-relaxed mb-10 max-w-md">
+            Technical foundation that early-stage startups need to succeed.
+            Portfolio companies with proven technical execution built in.
           </p>
 
           <div class="space-y-6 mb-10">
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 border border-[#ffffff]/30 flex items-center justify-center flex-shrink-0 mt-1">
-                <svg class="w-5 h-5 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+              <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
               <div>
-                <h4 class="font-body font-semibold mb-1">Technical Risk Eliminated</h4>
-                <p class="font-body text-sm text-white/50">Every venture has a proven technical team from day one.</p>
+                <h4 class="font-body font-medium text-sm mb-1">Technical Risk Eliminated</h4>
+                <p class="font-body text-xs text-white/40">Every venture has a proven technical team from day one.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 border border-[#ffffff]/30 flex items-center justify-center flex-shrink-0 mt-1">
-                <svg class="w-5 h-5 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+              <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
               <div>
-                <h4 class="font-body font-semibold mb-1">Curated Deal Flow</h4>
-                <p class="font-body text-sm text-white/50">Access founders we've vetted and committed to building with.</p>
+                <h4 class="font-body font-medium text-sm mb-1">Curated Deal Flow</h4>
+                <p class="font-body text-xs text-white/40">Access founders we've vetted and committed to building with.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 border border-[#ffffff]/30 flex items-center justify-center flex-shrink-0 mt-1">
-                <svg class="w-5 h-5 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+              <div class="w-8 h-8 bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
               </div>
               <div>
-                <h4 class="font-body font-semibold mb-1">Portfolio Approach</h4>
-                <p class="font-body text-sm text-white/50">Co-invest across our diverse portfolio of tech-enabled companies.</p>
+                <h4 class="font-body font-medium text-sm mb-1">Portfolio Approach</h4>
+                <p class="font-body text-xs text-white/40">Co-invest across our diverse portfolio of tech-enabled companies.</p>
               </div>
             </div>
           </div>
 
-          <a href="#contact" class="inline-flex items-center gap-3 text-[#ffffff] font-body font-medium hover:gap-5 transition-all duration-300">
+          <a href="#contact" class="group inline-flex items-center gap-2 text-white font-body text-sm font-medium hover:gap-3 transition-all duration-200">
             Investor Relations
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
         </div>
 
         <!-- Right Column - Stats -->
-        <div class="grid grid-cols-2 gap-6">
-          <div class="bg-[#0a0a0a] border border-white/5 p-8 text-center">
-            <div class="font-display text-5xl md:text-6xl text-[#ffffff] mb-3">15+</div>
-            <div class="font-body text-sm text-white/50 uppercase tracking-wide">Ventures Launched</div>
-            <p class="font-body text-xs text-white/30 mt-2">Across healthcare, fintech, education, and more</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-2">15+</div>
+            <div class="font-body text-xs text-white/40 uppercase tracking-wide mb-2">Ventures Launched</div>
+            <p class="font-body text-[10px] text-white/25 leading-relaxed">Healthcare, fintech, education, and more</p>
           </div>
-          <div class="bg-[#0a0a0a] border border-white/5 p-8 text-center">
-            <div class="font-display text-5xl md:text-6xl text-[#ffffff] mb-3">87%</div>
-            <div class="font-body text-sm text-white/50 uppercase tracking-wide">Success Rate</div>
-            <p class="font-body text-xs text-white/30 mt-2">Ventures reaching profitability within 24 months</p>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-2">87%</div>
+            <div class="font-body text-xs text-white/40 uppercase tracking-wide mb-2">Success Rate</div>
+            <p class="font-body text-[10px] text-white/25 leading-relaxed">Profitability within 24 months</p>
           </div>
-          <div class="bg-[#0a0a0a] border border-white/5 p-8 text-center">
-            <div class="font-display text-5xl md:text-6xl text-[#ffffff] mb-3">$3M</div>
-            <div class="font-body text-sm text-white/50 uppercase tracking-wide">Avg. Dev Value</div>
-            <p class="font-body text-xs text-white/30 mt-2">Technical investment per venture</p>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-2">$3M</div>
+            <div class="font-body text-xs text-white/40 uppercase tracking-wide mb-2">Avg. Dev Value</div>
+            <p class="font-body text-[10px] text-white/25 leading-relaxed">Technical investment per venture</p>
           </div>
-          <div class="bg-[#0a0a0a] border border-white/5 p-8 text-center">
-            <div class="font-display text-5xl md:text-6xl text-[#ffffff] mb-3">3x</div>
-            <div class="font-body text-sm text-white/50 uppercase tracking-wide">Faster to Market</div>
-            <p class="font-body text-xs text-white/30 mt-2">Compared to traditional hiring</p>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-2">3x</div>
+            <div class="font-body text-xs text-white/40 uppercase tracking-wide mb-2">Faster to Market</div>
+            <p class="font-body text-[10px] text-white/25 leading-relaxed">Compared to traditional hiring</p>
           </div>
         </div>
       </div>
@@ -755,304 +773,256 @@
   </section>
 
   <!-- Portfolio Section -->
-  <section id="portfolio" class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#050505] to-[#050505]"></div>
+  <section id="portfolio" class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-[#00040C]"></div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
       <!-- Section Header -->
-      <div class="max-w-4xl mx-auto text-center mb-20">
-        <div class="flex items-center gap-4 justify-center mb-6">
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-          <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">Portfolio</span>
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-        </div>
-        <h2 class="font-display text-4xl md:text-6xl font-semibold mb-6">
-          Companies We've <span class="italic font-normal text-[#ffffff]">Built</span>
+      <div class="max-w-3xl mb-16 lg:mb-20">
+        <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">PORTFOLIO</span>
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
+          Companies We've <em>Built</em>
         </h2>
-        <p class="font-body text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-          We partner with domain experts to build successful tech companies across diverse industries.
-          Each venture combines deep domain knowledge with world-class technical execution.
+        <p class="font-body text-base text-white/50 max-w-xl leading-relaxed">
+          Domain experts building successful tech companies across diverse industries.
+          Deep domain knowledge meets world-class technical execution.
         </p>
       </div>
 
       <!-- Portfolio Grid -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+      <div class="grid md:grid-cols-2 gap-4 mb-16">
         <!-- menu.link -->
-        <article class="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white to-white/50 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          <div class="p-10">
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] overflow-hidden hover:border-white/20 transition-all duration-300">
+          <div class="p-8">
             <div class="flex items-center justify-between mb-6">
-              <span class="text-white/60 text-xs tracking-widest uppercase font-body">Hospitality • SaaS</span>
-              <span class="text-white/30 text-xs font-body">Active</span>
+              <span class="font-mono text-[10px] text-white/30 tracking-wider uppercase">Hospitality / SaaS</span>
+              <span class="px-2 py-1 bg-white/[0.06] font-mono text-[10px] text-white/40">Active</span>
             </div>
-            <h3 class="font-display text-3xl mb-4">menu.link</h3>
-            <p class="font-body text-white/50 text-sm leading-relaxed mb-6">
-              Digital menu platform revolutionizing the restaurant industry with QR-based ordering, real-time updates, and seamless POS integration.
+            <h3 class="font-display text-2xl mb-3">menu.link</h3>
+            <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+              Digital menu platform revolutionizing restaurants with QR-based ordering and seamless POS integration.
             </p>
-            <div class="flex items-center justify-between pt-4 border-t border-white/10">
-              <span class="font-body text-xs text-white/40">Hospitality Tech</span>
-              <a href="https://menu.link" target="_blank" rel="noopener" class="font-body text-xs text-white hover:text-white/60 transition-colors">menu.link &rarr;</a>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <span class="font-body text-xs text-white/30">Hospitality Tech</span>
+              <a href="https://menu.link" target="_blank" rel="noopener" class="font-body text-xs text-white hover:text-white/60 transition-colors flex items-center gap-1">
+                menu.link
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Splitminder -->
-        <article class="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white to-white/50 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          <div class="p-10">
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] overflow-hidden hover:border-white/20 transition-all duration-300">
+          <div class="p-8">
             <div class="flex items-center justify-between mb-6">
-              <span class="text-white/60 text-xs tracking-widest uppercase font-body">Finance • App</span>
-              <span class="text-white/30 text-xs font-body">Active</span>
+              <span class="font-mono text-[10px] text-white/30 tracking-wider uppercase">Finance / App</span>
+              <span class="px-2 py-1 bg-white/[0.06] font-mono text-[10px] text-white/40">Active</span>
             </div>
-            <h3 class="font-display text-3xl mb-4">Splitminder</h3>
-            <p class="font-body text-white/50 text-sm leading-relaxed mb-6">
-              Smart expense splitting and group finance management. Simplifying shared costs for roommates, trips, and collaborative projects.
+            <h3 class="font-display text-2xl mb-3">Splitminder</h3>
+            <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+              Smart expense splitting and group finance management. Simplifying shared costs for roommates and trips.
             </p>
-            <div class="flex items-center justify-between pt-4 border-t border-white/10">
-              <span class="font-body text-xs text-white/40">FinTech</span>
-              <span class="font-body text-xs text-white">Coming Soon</span>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <span class="font-body text-xs text-white/30">FinTech</span>
+              <span class="font-body text-xs text-white/50">Coming Soon</span>
             </div>
           </div>
         </article>
 
         <!-- Reactiveflows -->
-        <article class="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white to-white/50 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          <div class="p-10">
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] overflow-hidden hover:border-white/20 transition-all duration-300">
+          <div class="p-8">
             <div class="flex items-center justify-between mb-6">
-              <span class="text-white/60 text-xs tracking-widest uppercase font-body">Developer Tools • Platform</span>
-              <span class="text-white/30 text-xs font-body">Active</span>
+              <span class="font-mono text-[10px] text-white/30 tracking-wider uppercase">DevTools / Platform</span>
+              <span class="px-2 py-1 bg-white/[0.06] font-mono text-[10px] text-white/40">Building</span>
             </div>
-            <h3 class="font-display text-3xl mb-4">Reactiveflows</h3>
-            <p class="font-body text-white/50 text-sm leading-relaxed mb-6">
-              Modern workflow automation platform for developers. Build, deploy, and scale reactive applications with visual programming and AI assistance.
+            <h3 class="font-display text-2xl mb-3">Reactiveflows</h3>
+            <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+              Modern workflow automation for developers. Visual programming meets AI-assisted deployment.
             </p>
-            <div class="flex items-center justify-between pt-4 border-t border-white/10">
-              <span class="font-body text-xs text-white/40">DevTools</span>
-              <span class="font-body text-xs text-white">In Development</span>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <span class="font-body text-xs text-white/30">Developer Tools</span>
+              <span class="font-body text-xs text-white/50">In Development</span>
             </div>
           </div>
         </article>
 
         <!-- Pasalo -->
-        <article class="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-500">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white to-white/50 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          <div class="p-10">
+        <article class="group relative bg-white/[0.02] border border-white/[0.06] overflow-hidden hover:border-white/20 transition-all duration-300">
+          <div class="p-8">
             <div class="flex items-center justify-between mb-6">
-              <span class="text-white/60 text-xs tracking-widest uppercase font-body">Social • Marketplace</span>
-              <span class="text-white/30 text-xs font-body">Active</span>
+              <span class="font-mono text-[10px] text-white/30 tracking-wider uppercase">Social / Marketplace</span>
+              <span class="px-2 py-1 bg-white/[0.06] font-mono text-[10px] text-white/40">Building</span>
             </div>
-            <h3 class="font-display text-3xl mb-4">Pasalo</h3>
-            <p class="font-body text-white/50 text-sm leading-relaxed mb-6">
-              Community-driven marketplace connecting people through trusted recommendations. Share what you love, discover what others trust.
+            <h3 class="font-display text-2xl mb-3">Pasalo</h3>
+            <p class="font-body text-sm text-white/40 leading-relaxed mb-6">
+              Community-driven marketplace connecting people through trusted recommendations.
             </p>
-            <div class="flex items-center justify-between pt-4 border-t border-white/10">
-              <span class="font-body text-xs text-white/40">Social Commerce</span>
-              <span class="font-body text-xs text-white">In Development</span>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <span class="font-body text-xs text-white/30">Social Commerce</span>
+              <span class="font-body text-xs text-white/50">In Development</span>
             </div>
           </div>
         </article>
       </div>
 
       <!-- Industries Banner -->
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="font-body text-sm text-white/40 mb-4">Industries we've built in</p>
-        <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-white/20 font-body text-sm">
-          <span>Healthcare</span>
-          <span>•</span>
-          <span>Finance</span>
-          <span>•</span>
-          <span>Education</span>
-          <span>•</span>
-          <span>Logistics</span>
-          <span>•</span>
-          <span>Legal</span>
-          <span>•</span>
-          <span>Real Estate</span>
-          <span>•</span>
-          <span>Agriculture</span>
-          <span>•</span>
-          <span>Manufacturing</span>
+      <div class="border-t border-white/[0.06] pt-12">
+        <p class="font-mono text-[10px] text-white/30 tracking-wider mb-4">INDUSTRIES WE BUILD IN</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Healthcare</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Finance</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Education</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Logistics</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Legal</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Real Estate</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Agriculture</span>
+          <span class="px-3 py-1.5 bg-white/[0.02] border border-white/[0.06] font-body text-xs text-white/40">Manufacturing</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-32 relative">
-    <div class="absolute inset-0 bg-[#050505]"></div>
+  <section id="about" class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-white/[0.01]"></div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
       <!-- Section Header -->
-      <div class="max-w-4xl mx-auto text-center mb-20">
-        <div class="flex items-center gap-4 justify-center mb-6">
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-          <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">About</span>
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
+        <div>
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">ABOUT</span>
+          <h2 class="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
+            The <em>Awasero</em> Way
+          </h2>
+          <p class="font-body text-base text-white/50 max-w-md leading-relaxed">
+            We believe the most impactful companies are built at the intersection of deep domain expertise
+            and exceptional technical execution.
+          </p>
         </div>
-        <h2 class="font-display text-4xl md:text-6xl font-semibold mb-6">
-          The <span class="italic font-normal text-[#ffffff]">Awasero</span> Way
-        </h2>
-        <p class="font-body text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-          We believe the most impactful companies are built at the intersection of deep domain expertise
-          and exceptional technical execution.
-        </p>
+        <!-- Brand Symbol -->
+        <div class="flex items-center justify-center lg:justify-end">
+          <svg class="w-32 h-32 lg:w-48 lg:h-48 opacity-10" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+        </div>
       </div>
 
-      <!-- Mission & Vision Grid -->
-      <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto mb-24">
-        <div class="bg-[#0a0a0a] border border-white/5 p-10">
-          <div class="w-12 h-12 border border-[#ffffff]/30 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-          </div>
-          <h3 class="font-display text-2xl mb-4">Our Mission</h3>
-          <p class="font-body text-white/60 leading-relaxed">
-            To democratize tech entrepreneurship by removing the technical barriers that prevent domain
+      <!-- Mission & Approach Grid -->
+      <div class="grid lg:grid-cols-2 gap-4 mb-20">
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <span class="font-mono text-[10px] text-white/30 tracking-wider block mb-4">MISSION</span>
+          <h3 class="font-display text-2xl mb-4">Why We Exist</h3>
+          <p class="font-body text-sm text-white/50 leading-relaxed">
+            To democratize tech entrepreneurship by removing technical barriers that prevent domain
             experts from building transformative companies. We partner exclusively with non-technical
-            founders who have deep industry knowledge and a clear vision for solving real problems.
+            founders who have deep industry knowledge and vision for solving real problems.
           </p>
         </div>
 
-        <div class="bg-[#0a0a0a] border border-white/5 p-10">
-          <div class="w-12 h-12 border border-[#ffffff]/30 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-            </svg>
-          </div>
-          <h3 class="font-display text-2xl mb-4">Our Approach</h3>
-          <p class="font-body text-white/60 leading-relaxed mb-6">
+        <div class="bg-white/[0.02] border border-white/[0.06] p-8">
+          <span class="font-mono text-[10px] text-white/30 tracking-wider block mb-4">APPROACH</span>
+          <h3 class="font-display text-2xl mb-4">How We Build</h3>
+          <p class="font-body text-sm text-white/50 leading-relaxed mb-6">
             We don't just build software — we build companies. Our equity-based model ensures we're
             fully invested in your success, with skin in the game from day one.
           </p>
-          <ul class="space-y-3 font-body text-sm text-white/50">
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
-              Strategic technical architecture
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
-              Rapid MVP development and iteration
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
-              Scalable infrastructure from day one
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-1.5 h-1.5 bg-[#ffffff]"></span>
-              Ongoing technical leadership
-            </li>
-          </ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
+              <span class="font-body text-xs text-white/40">Strategic architecture</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
+              <span class="font-body text-xs text-white/40">Rapid MVP development</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
+              <span class="font-body text-xs text-white/40">Scalable infrastructure</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1 h-1 bg-white/50 rounded-full"></span>
+              <span class="font-body text-xs text-white/40">Ongoing leadership</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Origin Story -->
-      <div class="max-w-3xl mx-auto text-center mb-24">
-        <h3 class="font-display text-2xl mb-6">Born in Caracas, Building Globally</h3>
-        <p class="font-body text-white/60 leading-relaxed mb-4">
-          Awasero was founded in Caracas, Venezuela — a city known for its entrepreneurial spirit and
-          resilience. Our name reflects our roots and our mission: to help visionaries awaken their
-          potential through technology.
-        </p>
-        <p class="font-body text-white/60 leading-relaxed">
-          Today, we work with founders across the globe, bringing Venezuelan ingenuity and technical
-          excellence to build the next generation of transformative companies.
-        </p>
+      <div class="border-t border-white/[0.06] pt-16 mb-20">
+        <div class="grid lg:grid-cols-3 gap-12">
+          <div>
+            <h3 class="font-display text-2xl mb-4">Born in Caracas</h3>
+            <p class="font-body text-sm text-white/50 leading-relaxed">
+              Founded in Caracas, Venezuela — a city known for its entrepreneurial spirit and
+              resilience. Our name reflects our mission: helping visionaries awaken their potential.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-display text-2xl mb-4">Building Globally</h3>
+            <p class="font-body text-sm text-white/50 leading-relaxed">
+              We work with founders across the globe, bringing Venezuelan ingenuity and technical
+              excellence to build transformative companies.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-display text-2xl mb-4">Long-term Partners</h3>
+            <p class="font-body text-sm text-white/50 leading-relaxed">
+              Not vendors, but partners. We're invested in your success for the long haul,
+              growing alongside the companies we help build.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Team Section -->
-      <div class="max-w-6xl mx-auto">
-        <h3 class="font-display text-3xl text-center mb-4">Leadership Team</h3>
-        <p class="font-body text-center text-white/50 mb-12 max-w-xl mx-auto">
-          Experienced founders, engineers, and operators committed to building companies that matter.
-        </p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-          <!-- Carlos Ruiz del Vizo - Founder & CEO -->
-          <div class="group text-center">
-            <div class="relative w-36 h-36 mx-auto mb-6 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
-              <div class="absolute inset-0 bg-[#0a0a0a] m-[1px]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl text-white/30">CR</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <h4 class="font-display text-xl mb-1">Carlos Ruiz del Vizo</h4>
-            <p class="text-white/80 text-sm font-body mb-3">Founder & CEO</p>
-            <p class="font-body text-xs text-white/40 leading-relaxed">
-              Visionary leader building the future of venture software development.
-            </p>
+      <div>
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12">
+          <div>
+            <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">LEADERSHIP</span>
+            <h3 class="font-display text-3xl">Our Team</h3>
           </div>
+          <p class="font-body text-sm text-white/40 max-w-md mt-4 lg:mt-0">
+            Experienced founders, engineers, and operators committed to building companies that matter.
+          </p>
+        </div>
 
-          <!-- Anabella Rojas - COO -->
-          <div class="group text-center">
-            <div class="relative w-36 h-36 mx-auto mb-6 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
-              <div class="absolute inset-0 bg-[#0a0a0a] m-[1px]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl text-white/30">AR</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <span class="font-display text-lg text-white/30">CR</span>
             </div>
-            <h4 class="font-display text-xl mb-1">Anabella Rojas</h4>
-            <p class="text-white/80 text-sm font-body mb-3">COO</p>
-            <p class="font-body text-xs text-white/40 leading-relaxed">
-              Operations excellence driving portfolio company success.
-            </p>
+            <h4 class="font-display text-lg mb-1">Carlos Ruiz del Vizo</h4>
+            <p class="font-mono text-[10px] text-white/40 tracking-wider">FOUNDER & CEO</p>
           </div>
-
-          <!-- Gabriel Garcia - CTO -->
-          <div class="group text-center">
-            <div class="relative w-36 h-36 mx-auto mb-6 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
-              <div class="absolute inset-0 bg-[#0a0a0a] m-[1px]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl text-white/30">GG</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <span class="font-display text-lg text-white/30">AR</span>
             </div>
-            <h4 class="font-display text-xl mb-1">Gabriel Garcia</h4>
-            <p class="text-white/80 text-sm font-body mb-3">CTO</p>
-            <p class="font-body text-xs text-white/40 leading-relaxed">
-              Technical architecture and engineering leadership.
-            </p>
+            <h4 class="font-display text-lg mb-1">Anabella Rojas</h4>
+            <p class="font-mono text-[10px] text-white/40 tracking-wider">COO</p>
           </div>
-
-          <!-- Andrés Torres - AI Advisor -->
-          <div class="group text-center">
-            <div class="relative w-36 h-36 mx-auto mb-6 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
-              <div class="absolute inset-0 bg-[#0a0a0a] m-[1px]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl text-white/30">AT</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <span class="font-display text-lg text-white/30">GG</span>
             </div>
-            <h4 class="font-display text-xl mb-1">Andrés Torres</h4>
-            <p class="text-white/80 text-sm font-body mb-3">AI Advisor</p>
-            <p class="font-body text-xs text-white/40 leading-relaxed">
-              Artificial intelligence strategy and implementation.
-            </p>
+            <h4 class="font-display text-lg mb-1">Gabriel Garcia</h4>
+            <p class="font-mono text-[10px] text-white/40 tracking-wider">CTO</p>
           </div>
-
-          <!-- Jorge Ruiz del Vizo - Investments -->
-          <div class="group text-center">
-            <div class="relative w-36 h-36 mx-auto mb-6 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
-              <div class="absolute inset-0 bg-[#0a0a0a] m-[1px]"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="font-display text-3xl text-white/30">JR</span>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <span class="font-display text-lg text-white/30">AT</span>
             </div>
-            <h4 class="font-display text-xl mb-1">Jorge Ruiz del Vizo</h4>
-            <p class="text-white/80 text-sm font-body mb-3">Investments</p>
-            <p class="font-body text-xs text-white/40 leading-relaxed">
-              Portfolio strategy and investor relations.
-            </p>
+            <h4 class="font-display text-lg mb-1">Andrés Torres</h4>
+            <p class="font-mono text-[10px] text-white/40 tracking-wider">AI ADVISOR</p>
+          </div>
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <span class="font-display text-lg text-white/30">JR</span>
+            </div>
+            <h4 class="font-display text-lg mb-1">Jorge Ruiz del Vizo</h4>
+            <p class="font-mono text-[10px] text-white/40 tracking-wider">INVESTMENTS</p>
           </div>
         </div>
       </div>
@@ -1060,206 +1030,126 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-24 relative">
-    <div class="absolute inset-0 bg-[#080808]"></div>
+  <section id="faq" class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-[#00040C]"></div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
       <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4">
-            Frequently Asked <span class="italic font-normal text-[#ffffff]">Questions</span>
+        <div class="mb-12">
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">FAQ</span>
+          <h2 class="font-display text-3xl md:text-4xl mb-4">
+            Frequently Asked <em>Questions</em>
           </h2>
-          <p class="font-body text-white/60">
+          <p class="font-body text-sm text-white/50">
             Common questions about partnering with Awasero.
           </p>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-2">
           <!-- FAQ Item 1 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">What is a venture software house?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">What is a venture software house?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                A venture software house is a company that provides software development services in exchange for
-                equity rather than traditional fees. Awasero acts as your technical co-founder, building your
-                product and sharing in your company's success.
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
+                A venture software house provides software development services in exchange for equity rather than traditional fees.
+                Awasero acts as your technical co-founder, building your product and sharing in your company's success.
               </p>
             </div>
           </details>
 
           <!-- FAQ Item 2 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">How do software developers for equity work?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">How do software developers for equity work?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
                 Software developers for equity invest their time and expertise in building your product in
-                exchange for ownership stake in your company. This aligns interests and removes upfront
-                capital requirements for founders.
+                exchange for ownership stake. This aligns interests and removes upfront capital requirements.
               </p>
             </div>
           </details>
 
           <!-- FAQ Item 3 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">What do I need to partner with Awasero?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">What do I need to partner with Awasero?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Non-technical founders need: deep domain expertise in their industry, a validated problem
-                worth solving, commitment to building a company full-time, and openness to a partnership
-                model with shared equity.
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
+                Deep domain expertise in your industry, a validated problem worth solving, commitment to building
+                a company full-time, and openness to a partnership model with shared equity.
               </p>
             </div>
           </details>
 
           <!-- FAQ Item 4 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">How much equity does Awasero take?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">How much equity does Awasero take?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Equity arrangements vary based on the scope of work, stage of the company, and founder
-                contributions. Typical arrangements range from 10-30% depending on the level of technical
-                involvement required.
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
+                Equity arrangements vary based on scope, stage, and founder contributions.
+                Typical arrangements range from 10-30% depending on technical involvement required.
               </p>
             </div>
           </details>
 
           <!-- FAQ Item 5 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">Where is Awasero based?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">How long does it take to build an MVP?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Awasero is headquartered in Caracas, Venezuela, with a distributed team working globally.
-                We partner with founders from anywhere in the world.
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
+                MVP development typically takes 8-16 weeks. Our agile approach delivers working software
+                in 2-week sprints, allowing you to validate and iterate quickly.
               </p>
             </div>
           </details>
 
           <!-- FAQ Item 6 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">How can I find a technical co-founder for my startup?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+          <details class="group bg-white/[0.02] border border-white/[0.06]">
+            <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+              <span class="font-body text-sm font-medium pr-6">Can Awasero help with AI and machine learning?</span>
+              <span class="text-white/40 transform group-open:rotate-45 transition-transform duration-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Instead of searching for an individual technical co-founder, you can partner with Awasero.
-                We provide an entire technical team that acts as your technical co-founder, bringing experienced
-                engineers, designers, and architects who work for equity in your company.
-              </p>
-            </div>
-          </details>
-
-          <!-- FAQ Item 7 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">How long does it take to build an MVP?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                MVP development typically takes 8-16 weeks depending on complexity. Our agile approach
-                delivers working software in 2-week sprints, allowing you to validate assumptions and
-                iterate quickly. We prioritize speed-to-market while building a foundation that can scale.
-              </p>
-            </div>
-          </details>
-
-          <!-- FAQ Item 8 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">Can Awasero help with AI and machine learning?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Yes, Awasero has extensive experience in AI/ML development. Our team includes specialists
-                in machine learning, natural language processing, computer vision, and predictive analytics.
+            <div class="px-5 pb-5">
+              <p class="font-body text-white/40 text-sm leading-relaxed">
+                Yes. Our team includes specialists in machine learning, NLP, computer vision, and predictive analytics.
                 We help non-technical founders build AI-powered products across industries.
-              </p>
-            </div>
-          </details>
-
-          <!-- FAQ Item 9 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">What industries does Awasero work with?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                Awasero partners with founders across diverse industries including healthcare, fintech,
-                education, logistics, legal tech, real estate, agriculture, and manufacturing. We look
-                for founders with deep domain expertise who are solving meaningful problems.
-              </p>
-            </div>
-          </details>
-
-          <!-- FAQ Item 10 -->
-          <details class="group bg-[#0a0a0a] border border-white/5">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <span class="font-body font-medium pr-6">How do I apply to partner with Awasero?</span>
-              <span class="text-[#ffffff] transform group-open:rotate-45 transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
-                </svg>
-              </span>
-            </summary>
-            <div class="px-6 pb-6">
-              <p class="font-body text-white/60 text-sm leading-relaxed">
-                To apply for partnership, email partners@awasero.com with information about your background,
-                industry expertise, the problem you're solving, and your vision for the company. Our team
-                reviews applications and schedules discovery calls with founders who are a good fit.
               </p>
             </div>
           </details>
@@ -1269,77 +1159,59 @@
   </section>
 
   <!-- Contact CTA Section -->
-  <section id="contact" class="py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#0a0a0a] to-[#050505]"></div>
+  <section id="contact" class="py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-white/[0.01]"></div>
 
-    <!-- Decorative elements -->
-    <div class="absolute top-1/2 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-[#ffffff]/20 to-transparent"></div>
-    <div class="absolute top-1/2 right-0 w-1/3 h-px bg-gradient-to-r from-transparent via-[#ffffff]/20 to-transparent"></div>
+    <div class="container mx-auto px-6 lg:px-16 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left: CTA Content -->
+        <div>
+          <span class="font-mono text-xs text-white/40 tracking-wider mb-4 block">GET IN TOUCH</span>
+          <h2 class="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
+            Ready to <em>Build?</em>
+          </h2>
+          <p class="font-body text-base text-white/50 max-w-md leading-relaxed mb-8">
+            If you're a domain expert with a transformative vision, we want to hear from you.
+            Let's explore how Awasero can become your technical co-founder.
+          </p>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="flex items-center gap-4 justify-center mb-6">
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-          <span class="text-[#ffffff] text-sm tracking-[0.3em] uppercase font-body">Let's Build</span>
-          <div class="w-12 h-px bg-[#ffffff]/50"></div>
-        </div>
-
-        <h2 class="font-display text-4xl md:text-6xl font-semibold mb-6">
-          Ready to Build Your <span class="italic font-normal text-[#ffffff]">Vision?</span>
-        </h2>
-        <p class="font-body text-lg text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Whether you're a non-technical founder with a vision or an investor looking for de-risked
-          opportunities, we'd love to hear from you.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-          <a href="mailto:partners@awasero.com" class="group relative px-10 py-5 bg-[#ffffff] text-[#050505] font-body font-semibold tracking-wide overflow-hidden">
-            <span class="relative z-10 flex items-center justify-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          <div class="space-y-4">
+            <a href="mailto:partners@awasero.com" class="group flex items-center gap-4 p-4 bg-white/[0.02] border border-white/[0.06] hover:border-white/20 transition-all duration-200">
+              <div class="w-10 h-10 bg-white/[0.06] flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <div class="font-mono text-[10px] text-white/30 tracking-wider mb-1">FOR PARTNERS</div>
+                <div class="font-body text-sm text-white">partners@awasero.com</div>
+              </div>
+              <svg class="w-4 h-4 text-white/30 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
-              Apply as Partner
-            </span>
-            <div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-          </a>
-          <a href="mailto:invest@awasero.com" class="group px-10 py-5 border border-[#ffffff] text-[#ffffff] font-body font-semibold tracking-wide hover:bg-[#ffffff] hover:text-[#050505] transition-all duration-300 flex items-center justify-center gap-3">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            Investor Relations
-          </a>
+            </a>
+            <a href="mailto:investors@awasero.com" class="group flex items-center gap-4 p-4 bg-white/[0.02] border border-white/[0.06] hover:border-white/20 transition-all duration-200">
+              <div class="w-10 h-10 bg-white/[0.06] flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <div class="font-mono text-[10px] text-white/30 tracking-wider mb-1">FOR INVESTORS</div>
+                <div class="font-body text-sm text-white">investors@awasero.com</div>
+              </div>
+              <svg class="w-4 h-4 text-white/30 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <!-- Contact Info -->
-        <div class="grid md:grid-cols-3 gap-8 pt-12 border-t border-white/10">
-          <div>
-            <h4 class="font-body text-sm text-[#ffffff] tracking-wider uppercase mb-3">Email</h4>
-            <a href="mailto:hello@awasero.com" class="font-body text-white/60 hover:text-white transition-colors">hello@awasero.com</a>
-          </div>
-          <div>
-            <h4 class="font-body text-sm text-[#ffffff] tracking-wider uppercase mb-3">Location</h4>
-            <p class="font-body text-white/60">Caracas, Venezuela</p>
-          </div>
-          <div>
-            <h4 class="font-body text-sm text-[#ffffff] tracking-wider uppercase mb-3">Social</h4>
-            <div class="flex gap-4 justify-center md:justify-start">
-              <a href="#" class="text-white/40 hover:text-[#ffffff] transition-colors" aria-label="LinkedIn">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-white/40 hover:text-[#ffffff] transition-colors" aria-label="Twitter">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-white/40 hover:text-[#ffffff] transition-colors" aria-label="GitHub">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
+        <!-- Right: Brand Symbol -->
+        <div class="flex items-center justify-center">
+          <svg class="w-48 h-48 lg:w-64 lg:h-64 opacity-10" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -1349,67 +1221,72 @@
   <!-- End Main Content -->
 
   <!-- Footer -->
-  <footer class="py-16 bg-[#050505] border-t border-white/5" role="contentinfo">
-    <div class="container mx-auto px-6 lg:px-12">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+  <footer class="py-12 lg:py-16 bg-[#00040C] border-t border-white/[0.06]" role="contentinfo">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 border border-[#ffffff] flex items-center justify-center">
-              <span class="font-display text-xl text-[#ffffff]">A</span>
-            </div>
-            <span class="font-display text-xl tracking-wide">awasero</span>
+            <!-- Brand Symbol in Footer -->
+            <svg class="w-7 h-7" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+            </svg>
+            <span class="font-body text-base font-medium">awasero</span>
           </div>
-          <p class="font-body text-sm text-white/40 leading-relaxed mb-4">
+          <p class="font-body text-xs text-white/40 leading-relaxed mb-4">
             Venture software house enabling non-technical founders to build transformative tech companies.
           </p>
-          <p class="font-body text-xs text-white/30">
-            From Caracas to the world.
+          <p class="font-mono text-[10px] text-white/25 tracking-wider">
+            CARACAS, VENEZUELA
           </p>
         </div>
 
         <div>
-          <h4 class="font-body font-semibold text-sm tracking-wider uppercase mb-6">Company</h4>
+          <h4 class="font-mono text-[10px] text-white/30 tracking-wider mb-5">COMPANY</h4>
           <ul class="space-y-3 font-body text-sm text-white/40">
-            <li><a href="#about" class="hover:text-[#ffffff] transition-colors">About Us</a></li>
-            <li><a href="#portfolio" class="hover:text-[#ffffff] transition-colors">Portfolio</a></li>
-            <li><a href="#" class="hover:text-[#ffffff] transition-colors">Careers</a></li>
-            <li><a href="#" class="hover:text-[#ffffff] transition-colors">Blog</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
+            <li><a href="#partners" class="hover:text-white transition-colors">Partners</a></li>
+            <li><a href="#investors" class="hover:text-white transition-colors">Investors</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-body font-semibold text-sm tracking-wider uppercase mb-6">Resources</h4>
+          <h4 class="font-mono text-[10px] text-white/30 tracking-wider mb-5">RESOURCES</h4>
           <ul class="space-y-3 font-body text-sm text-white/40">
-            <li><a href="#" class="hover:text-[#ffffff] transition-colors">Founder's Guide</a></li>
-            <li><a href="#" class="hover:text-[#ffffff] transition-colors">Case Studies</a></li>
-            <li><a href="#faq" class="hover:text-[#ffffff] transition-colors">FAQ</a></li>
-            <li><a href="#contact" class="hover:text-[#ffffff] transition-colors">Contact</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-body font-semibold text-sm tracking-wider uppercase mb-6">Stay Updated</h4>
-          <p class="font-body text-sm text-white/40 mb-4">
-            Insights on building tech companies for non-technical founders.
-          </p>
-          <form class="flex">
-            <input type="email" placeholder="Email" class="flex-1 bg-[#0a0a0a] border border-white/10 px-4 py-3 text-sm font-body focus:border-[#ffffff] focus:outline-none transition-colors" />
-            <button type="submit" class="px-4 py-3 bg-[#ffffff] text-[#050505] hover:bg-white transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          <h4 class="font-mono text-[10px] text-white/30 tracking-wider mb-5">CONNECT</h4>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-white/[0.02] border border-white/[0.06] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
-            </button>
-          </form>
+            </a>
+            <a href="#" class="w-9 h-9 bg-white/[0.02] border border-white/[0.06] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-9 h-9 bg-white/[0.02] border border-white/[0.06] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all" aria-label="GitHub">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-body text-xs text-white/30">
+      <div class="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body text-[11px] text-white/25">
           &copy; 2024 Awasero. All rights reserved.
         </p>
-        <div class="flex gap-6 font-body text-xs text-white/30">
-          <a href="#" class="hover:text-white/60 transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-white/60 transition-colors">Terms of Service</a>
+        <div class="flex gap-6 font-body text-[11px] text-white/25">
+          <a href="#" class="hover:text-white/50 transition-colors">Privacy</a>
+          <a href="#" class="hover:text-white/50 transition-colors">Terms</a>
         </div>
       </div>
     </div>
