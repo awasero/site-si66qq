@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.codeSymbols = [];
       this.mountainPoints = [];
       this.mouse = { x: null, y: null };
-      this.goldColor = '#C9A227';
-      this.goldColorLight = 'rgba(201, 162, 39, 0.3)';
-      this.goldColorFaint = 'rgba(201, 162, 39, 0.08)';
+      this.accentColor = '#ffffff';
+      this.accentColorLight = 'rgba(255, 255, 255, 0.3)';
+      this.accentColorFaint = 'rgba(255, 255, 255, 0.08)';
 
       this.init();
       this.animate();
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (distance < maxDistance) {
             const opacity = (1 - distance / maxDistance) * 0.15;
             this.ctx.beginPath();
-            this.ctx.strokeStyle = `rgba(201, 162, 39, ${opacity})`;
+            this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
             this.ctx.lineWidth = 0.5;
             this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
             this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (distance < 200) {
             const opacity = (1 - distance / 200) * 0.3;
             this.ctx.beginPath();
-            this.ctx.strokeStyle = `rgba(201, 162, 39, ${opacity})`;
+            this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
             this.ctx.lineWidth = 1;
             this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Draw particle
         this.ctx.beginPath();
         this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        this.ctx.fillStyle = `rgba(201, 162, 39, ${pulseOpacity})`;
+        this.ctx.fillStyle = `rgba(255, 255, 255, ${pulseOpacity})`;
         this.ctx.fill();
       });
     }
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.ctx.save();
         this.ctx.translate(symbol.x, symbol.y);
         this.ctx.rotate(symbol.rotation);
-        this.ctx.fillStyle = `rgba(201, 162, 39, ${symbol.opacity})`;
+        this.ctx.fillStyle = `rgba(255, 255, 255, ${symbol.opacity})`;
         this.ctx.font = `${symbol.size}px "Space Grotesk", monospace`;
         this.ctx.fillText(symbol.symbol, 0, 0);
         this.ctx.restore();
@@ -240,8 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Gradient fill
       const gradient = this.ctx.createLinearGradient(0, this.height * 0.6, 0, this.height);
-      gradient.addColorStop(0, 'rgba(201, 162, 39, 0.03)');
-      gradient.addColorStop(1, 'rgba(201, 162, 39, 0)');
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.03)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
       this.ctx.fillStyle = gradient;
       this.ctx.fill();
 
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
           this.ctx.quadraticCurveTo(prev.x, prev.y, cpX, (prev.y + point.y) / 2);
         }
       });
-      this.ctx.strokeStyle = 'rgba(201, 162, 39, 0.1)';
+      this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
       this.ctx.lineWidth = 1;
       this.ctx.stroke();
     }
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const gridSize = 80;
       const offset = Date.now() * 0.01 % gridSize;
 
-      this.ctx.strokeStyle = 'rgba(201, 162, 39, 0.02)';
+      this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
       this.ctx.lineWidth = 0.5;
 
       // Vertical lines
@@ -299,8 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
           orb.x, orb.y, 0,
           orb.x, orb.y, orb.radius
         );
-        gradient.addColorStop(0, 'rgba(201, 162, 39, 0.03)');
-        gradient.addColorStop(1, 'rgba(201, 162, 39, 0)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.03)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
         this.ctx.beginPath();
         this.ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
@@ -542,11 +542,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================
   console.log(
     '%c ▄▀█ █░█░█ ▄▀█ █▀ █▀▀ █▀█ █▀█ ',
-    'color: #C9A227; font-size: 14px; font-weight: bold;'
+    'color: #ffffff; font-size: 14px; font-weight: bold;'
   );
   console.log(
     '%c █▀█ ▀▄▀▄▀ █▀█ ▄█ ██▄ █▀▄ █▄█ ',
-    'color: #C9A227; font-size: 14px; font-weight: bold;'
+    'color: #ffffff; font-size: 14px; font-weight: bold;'
   );
   console.log(
     '%cVenture Software House',
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   console.log(
     '%c→ partners@awasero.com',
-    'color: #C9A227; font-size: 11px;'
+    'color: #fff; font-size: 11px;'
   );
 
   // =========================================
