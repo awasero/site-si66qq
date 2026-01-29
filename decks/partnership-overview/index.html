@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Overview | Awasero Deck</title>
+  <meta name="description" content="Awasero Partnership Overview - Learn about our venture software house model and partnership opportunities.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Instrument Serif', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'brand': {
+              'dark': '#00040C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base Styles */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #00040C;
+      color: #ffffff;
+    }
+
+    /* Slide Container */
+    .deck-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(100px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-sizing: border-box;
+    }
+
+    .slide-content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .slide.prev {
+      transform: translateX(-100px);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+
+    /* Navigation Controls */
+    .nav-controls {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 50;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Slide Typography */
+    .slide-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .slide-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-subtitle {
+      font-family: 'Inter', sans-serif;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* Grid Cards */
+    .info-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem;
+    }
+
+    .info-card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* Team Cards with Images */
+    .team-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+      font-family: 'Instrument Serif', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.4);
+      overflow: hidden;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+    }
+
+    /* Large Stat Blocks */
+    .stat-block {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+    }
+
+    /* Portfolio Logo Grid */
+    .portfolio-logo {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+    }
+
+    .portfolio-logo img {
+      max-width: 100%;
+      max-height: 40px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .portfolio-logo-placeholder {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .portfolio-logo-industry {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* Contact Links */
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem;
+    }
+
+    /* ApexCharts Custom Styles */
+    .apexcharts-tooltip {
+      background: #00040C !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+      color: #fff !important;
+    }
+
+    .apexcharts-tooltip-title {
+      background: rgba(255,255,255,0.05) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    }
+
+    .apexcharts-xaxis-label, .apexcharts-yaxis-label {
+      fill: rgba(255,255,255,0.4) !important;
+    }
+
+    .apexcharts-gridline {
+      stroke: rgba(255,255,255,0.06) !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 3rem 2rem;
+      }
+
+      .slide-content {
+        max-width: 100%;
+      }
+
+      .slide-title {
+        font-size: 2.5rem !important;
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 5rem 1.5rem 6rem;
+        overflow-y: auto;
+        align-items: flex-start;
+      }
+
+      .slide-title {
+        font-size: 2rem !important;
+      }
+
+      .slide-subtitle {
+        font-size: 0.9rem !important;
+      }
+
+      .nav-controls {
+        bottom: 1rem;
+      }
+
+      .top-bar {
+        padding: 1rem;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+      }
+
+      .stat-block {
+        padding: 1rem;
+      }
+
+      .team-card {
+        padding: 0.75rem;
+      }
+
+      .team-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 0.875rem;
+      }
+
+      .team-name {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Print Styles for PDF */
+    @media print {
+      html, body {
+        overflow: visible !important;
+        background: #00040C !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .deck-container {
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        height: 100vh !important;
+        min-height: 100vh;
+        overflow: hidden !important;
+      }
+
+      .slide:last-child {
+        page-break-after: auto;
+      }
+
+      .top-bar,
+      .nav-controls,
+      .progress-bar,
+      .keyboard-hint {
+        display: none !important;
+      }
+
+      @page {
+        size: 16in 9in landscape;
+        margin: 0;
+      }
+    }
+
+    /* Keyboard hint */
+    .keyboard-hint {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      z-index: 50;
+    }
+
+    @media (max-width: 768px) {
+      .keyboard-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#00040C] text-white antialiased">
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <a href="/" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+      <svg class="w-6 h-6" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+      </svg>
+      <span class="font-body text-sm font-medium hidden sm:inline">awasero</span>
+    </a>
+
+    <button class="download-btn" onclick="window.print()">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+      <span>Download PDF</span>
+    </button>
+  </div>
+
+  <!-- Deck Container -->
+  <div class="deck-container" id="deckContainer">
+
+    <!-- Slide 1: Title -->
+    <div class="slide active" data-slide="1">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Awasero Deck</div>
+        <h1 class="slide-title text-5xl md:text-6xl lg:text-7xl mb-6">
+          Partnership<br><em>Overview</em>
+        </h1>
+        <p class="slide-subtitle text-lg md:text-xl max-w-2xl mb-10">
+          Venture software house enabling non-technical founders to build transformative tech companies through equity-based partnerships.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-block">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">Ventures Built</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">$12M</div>
+            <div class="stat-label">Value Created</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">87%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">3x</div>
+            <div class="stat-label">Faster to Market</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: What is Awasero -->
+    <div class="slide" data-slide="2">
+      <div class="slide-content">
+        <div class="slide-eyebrow">What We Do</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          What is <em>Awasero?</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div>
+            <p class="slide-subtitle text-base md:text-lg mb-6">
+              We are a <strong class="text-white">venture software house</strong> that partners with non-technical founders who have deep domain expertise.
+            </p>
+            <p class="slide-subtitle text-base md:text-lg mb-8">
+              Our software developers work for <strong class="text-white">equity</strong>, becoming your technical co-founder and building your vision from MVP to scale.
+            </p>
+
+            <!-- Portfolio Logos -->
+            <div class="mt-6">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">PORTFOLIO COMPANIES</div>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="portfolio-logo">
+                  <img src="images/portfolio/menulink.svg" alt="menu.link" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <span class="portfolio-logo-placeholder" style="display:none;">menu.link</span>
+                </div>
+                <div class="portfolio-logo">
+                  <img src="images/portfolio/splitminder.svg" alt="Splitminder" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <span class="portfolio-logo-placeholder" style="display:none;">Splitminder</span>
+                </div>
+                <div class="portfolio-logo">
+                  <img src="images/portfolio/legalsync.svg" alt="Legalsync" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <span class="portfolio-logo-placeholder" style="display:none;">Legalsync</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="info-card">
+              <div class="info-card-title">Technical Co-Founder</div>
+              <div class="info-card-text">Full technical team acting as your CTO and engineering department</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">Equity Partnership</div>
+              <div class="info-card-text">Aligned incentives through ownership, not just service fees</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">End-to-End Delivery</div>
+              <div class="info-card-text">From concept to launch to scale, we build it all</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Why We're Different -->
+    <div class="slide" data-slide="3">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Our Model</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Changing <em>Venture</em> Development
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <div class="grid gap-4 mb-6">
+              <div class="info-card">
+                <div class="font-mono text-xs text-white/30 mb-2">TRADITIONAL</div>
+                <div class="info-card-title">Hiring Developers</div>
+                <div class="info-card-text mt-2">High upfront costs, recruitment challenges, no strategic alignment</div>
+              </div>
+              <div class="info-card">
+                <div class="font-mono text-xs text-white/30 mb-2">ALTERNATIVE</div>
+                <div class="info-card-title">Dev Agencies</div>
+                <div class="info-card-text mt-2">Build what you ask for, not what you need. No skin in the game</div>
+              </div>
+              <div class="info-card border-white/20">
+                <div class="font-mono text-xs text-white/50 mb-2">AWASERO</div>
+                <div class="info-card-title text-white">Equity Partnership</div>
+                <div class="info-card-text mt-2 text-white/50">Aligned incentives, long-term commitment, shared success</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="chart-container mb-4">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">PORTFOLIO GROWTH</div>
+              <div id="growthChart" style="height: 180px;"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="stat-block">
+                <div class="stat-value text-3xl">$0</div>
+                <div class="stat-label">Upfront Cost</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-3xl">10-30%</div>
+                <div class="stat-label">Equity Range</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Investment Partners -->
+    <div class="slide" data-slide="4">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Partnerships We Seek</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          Investment <em>Partners</em>
+        </h2>
+
+        <p class="slide-subtitle text-base md:text-lg max-w-2xl mb-8">
+          We seek strategic relationships with capital partners who share our vision of de-risking early-stage ventures through technical excellence.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Venture Capital</div>
+            <div class="info-card-text mt-2">Partner with us to provide your portfolio companies with proven technical execution. Co-invest in de-risked opportunities.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Angel Investors</div>
+            <div class="info-card-text mt-2">Access deal flow from technically-validated startups. Invest alongside experienced operators.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Investment Firms</div>
+            <div class="info-card-text mt-2">Strategic partnerships for systematic deal sourcing, technical due diligence, and portfolio support.</div>
+          </div>
+        </div>
+
+        <div class="chart-container mt-6">
+          <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">INVESTMENT OPPORTUNITY BY SECTOR</div>
+          <div id="sectorChart" style="height: 140px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Strategic Partners -->
+    <div class="slide" data-slide="5">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Partnerships We Seek</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          Strategic <em>Partners</em>
+        </h2>
+
+        <p class="slide-subtitle text-base md:text-lg max-w-2xl mb-8">
+          Beyond capital, we partner with organizations that can amplify our impact and help founders succeed in new markets and sectors.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Governments</div>
+            <div class="info-card-text mt-2">Economic development initiatives, innovation programs, and public-private partnerships to foster entrepreneurship.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Non-Profits</div>
+            <div class="info-card-text mt-2">Impact-driven organizations building technology for social good. Special terms for mission-aligned ventures.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Accelerators</div>
+            <div class="info-card-text mt-2">Provide your cohorts with technical resources. White-label our services or refer founders.</div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-5 bg-white/[0.02] border border-white/[0.06]">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="font-mono text-xs text-white/40 tracking-wider">FOCUS REGIONS</div>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Latin America</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">United States</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Caribbean</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Europe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Portfolio -->
+    <div class="slide" data-slide="6">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Our Work</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Portfolio <em>Companies</em>
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="portfolio-logo">
+            <img src="images/portfolio/menulink.svg" alt="menu.link" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">menu.link</span>
+            <span class="portfolio-logo-industry">Hospitality</span>
+          </div>
+          <div class="portfolio-logo">
+            <img src="images/portfolio/splitminder.svg" alt="Splitminder" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">Splitminder</span>
+            <span class="portfolio-logo-industry">FinTech</span>
+          </div>
+          <div class="portfolio-logo">
+            <img src="images/portfolio/reactiveflows.svg" alt="Reactiveflows" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">Reactiveflows</span>
+            <span class="portfolio-logo-industry">Productivity</span>
+          </div>
+          <div class="portfolio-logo">
+            <img src="images/portfolio/synced.svg" alt="Synced" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">Synced</span>
+            <span class="portfolio-logo-industry">SaaS</span>
+          </div>
+          <div class="portfolio-logo">
+            <img src="images/portfolio/inverso.svg" alt="Inverso" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">Inverso</span>
+            <span class="portfolio-logo-industry">FinTech</span>
+          </div>
+          <div class="portfolio-logo">
+            <img src="images/portfolio/legalsync.svg" alt="Legalsync" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="portfolio-logo-placeholder">Legalsync</span>
+            <span class="portfolio-logo-industry">Legal Tech</span>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="chart-container">
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">INDUSTRIES SERVED</div>
+            <div id="industriesChart" style="height: 160px;"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-block">
+              <div class="stat-value">6</div>
+              <div class="stat-label">Companies</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Industries</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">AI-Powered</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">$12M</div>
+              <div class="stat-label">Value Created</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Team -->
+    <div class="slide" data-slide="7">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Leadership</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Our <em>Team</em>
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/carlos.jpg" alt="Carlos Ruiz del Vizo" onerror="this.style.display='none'; this.parentElement.innerHTML='CR';">
+            </div>
+            <div class="team-name">Carlos Ruiz del Vizo</div>
+            <div class="team-role">CEO</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/anabella.jpg" alt="Anabella Rojas" onerror="this.style.display='none'; this.parentElement.innerHTML='AR';">
+            </div>
+            <div class="team-name">Anabella Rojas</div>
+            <div class="team-role">COO</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/andres.jpg" alt="Andres Torres" onerror="this.style.display='none'; this.parentElement.innerHTML='AT';">
+            </div>
+            <div class="team-name">Andres Torres</div>
+            <div class="team-role">AI Advisor</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/jorge.jpg" alt="Jorge Ruiz del Vizo" onerror="this.style.display='none'; this.parentElement.innerHTML='JR';">
+            </div>
+            <div class="team-name">Jorge Ruiz del Vizo</div>
+            <div class="team-role">Advisor</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/domingo.jpg" alt="Domingo Noriega" onerror="this.style.display='none'; this.parentElement.innerHTML='DN';">
+            </div>
+            <div class="team-name">Domingo Noriega</div>
+            <div class="team-role">Advisor</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="images/team/estefania.jpg" alt="Estefania Torcat" onerror="this.style.display='none'; this.parentElement.innerHTML='ET';">
+            </div>
+            <div class="team-name">Estefania Torcat</div>
+            <div class="team-role">B2B</div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-8">
+          <div class="p-5 bg-white/[0.02] border border-white/[0.06]">
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">HEADQUARTERS</div>
+            <div class="font-display text-xl mb-1">Miami, Florida</div>
+            <div class="font-body text-sm text-white/40">800 Brickell Ave</div>
+          </div>
+          <div class="p-5 bg-white/[0.02] border border-white/[0.06]">
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">ENGINEERING HUB</div>
+            <div class="font-display text-xl mb-1">Caracas, Venezuela</div>
+            <div class="font-body text-sm text-white/40">Where we were born</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Contact -->
+    <div class="slide" data-slide="8">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Get in Touch</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-4">
+          Let's <em>Connect</em>
+        </h2>
+        <p class="slide-subtitle text-base md:text-lg max-w-xl mb-10">
+          Ready to explore a partnership? We'd love to hear from you.
+        </p>
+
+        <div class="space-y-4 max-w-lg">
+          <a href="mailto:partners@awasero.com" class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">PARTNERSHIPS</div>
+              <div class="font-body text-sm text-white">partners@awasero.com</div>
+            </div>
+          </a>
+
+          <a href="mailto:investors@awasero.com" class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">INVESTORS</div>
+              <div class="font-body text-sm text-white">investors@awasero.com</div>
+            </div>
+          </a>
+
+          <a href="https://awasero.com" target="_blank" class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">WEBSITE</div>
+              <div class="font-body text-sm text-white">awasero.com</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-12 flex items-center gap-4">
+          <svg class="w-10 h-10 opacity-40" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+          <div>
+            <div class="font-body text-sm font-medium">Awasero</div>
+            <div class="font-mono text-[10px] text-white/40">Venture Software House</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" disabled>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">8</span></span>
+    <button class="nav-btn" id="nextBtn">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Keyboard Hint -->
+  <div class="keyboard-hint">
+    Use arrow keys or space to navigate
+  </div>
+
+  <script>
+    // Deck Navigation
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 1;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const progressBar = document.getElementById('progressBar');
+
+    totalSlidesEl.textContent = totalSlides;
+
+    function updateSlide(direction) {
+      const prevSlideNum = currentSlide;
+
+      if (direction === 'next' && currentSlide < totalSlides) {
+        currentSlide++;
+      } else if (direction === 'prev' && currentSlide > 1) {
+        currentSlide--;
+      } else if (typeof direction === 'number') {
+        currentSlide = direction;
+      }
+
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index + 1 === currentSlide) {
+          slide.classList.add('active');
+        } else if (index + 1 < currentSlide) {
+          slide.classList.add('prev');
+        }
+      });
+
+      // Update counter
+      currentSlideEl.textContent = currentSlide;
+
+      // Update progress bar
+      const progress = (currentSlide / totalSlides) * 100;
+      progressBar.style.width = progress + '%';
+
+      // Update button states
+      prevBtn.disabled = currentSlide === 1;
+      nextBtn.disabled = currentSlide === totalSlides;
+
+      // Initialize charts when slide becomes active
+      initChartsForSlide(currentSlide);
+    }
+
+    // Button navigation
+    prevBtn.addEventListener('click', () => updateSlide('prev'));
+    nextBtn.addEventListener('click', () => updateSlide('next'));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        updateSlide('next');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        updateSlide('prev');
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        updateSlide(1);
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        updateSlide(totalSlides);
+      }
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          updateSlide('next');
+        } else {
+          updateSlide('prev');
+        }
+      }
+    }
+
+    // ApexCharts Configuration
+    const chartTheme = {
+      mode: 'dark',
+      palette: 'palette1',
+      monochrome: {
+        enabled: true,
+        color: '#ffffff',
+        shadeTo: 'dark',
+        shadeIntensity: 0.65
+      }
+    };
+
+    const chartDefaults = {
+      chart: {
+        background: 'transparent',
+        toolbar: { show: false },
+        animations: {
+          enabled: true,
+          easing: 'easeinout',
+          speed: 800
+        }
+      },
+      theme: chartTheme,
+      grid: {
+        borderColor: 'rgba(255,255,255,0.06)',
+        strokeDashArray: 0
+      },
+      tooltip: {
+        theme: 'dark',
+        style: {
+          fontSize: '11px',
+          fontFamily: 'JetBrains Mono, monospace'
+        }
+      },
+      dataLabels: {
+        style: {
+          fontFamily: 'JetBrains Mono, monospace',
+          fontWeight: 400
+        }
+      }
+    };
+
+    let chartsInitialized = {};
+
+    function initChartsForSlide(slideNum) {
+      if (slideNum === 3 && !chartsInitialized[3]) {
+        // Growth Chart
+        const growthOptions = {
+          ...chartDefaults,
+          series: [{
+            name: 'Ventures',
+            data: [2, 4, 6, 9, 12, 15]
+          }],
+          chart: {
+            ...chartDefaults.chart,
+            type: 'area',
+            height: 180
+          },
+          stroke: {
+            curve: 'smooth',
+            width: 2
+          },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.4,
+              opacityTo: 0.05,
+              stops: [0, 100]
+            }
+          },
+          xaxis: {
+            categories: ['2019', '2020', '2021', '2022', '2023', '2024'],
+            labels: {
+              style: {
+                colors: 'rgba(255,255,255,0.4)',
+                fontSize: '10px',
+                fontFamily: 'JetBrains Mono, monospace'
+              }
+            },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+          },
+          yaxis: {
+            labels: {
+              style: {
+                colors: 'rgba(255,255,255,0.4)',
+                fontSize: '10px',
+                fontFamily: 'JetBrains Mono, monospace'
+              }
+            }
+          }
+        };
+        new ApexCharts(document.querySelector("#growthChart"), growthOptions).render();
+        chartsInitialized[3] = true;
+      }
+
+      if (slideNum === 4 && !chartsInitialized[4]) {
+        // Sector Chart
+        const sectorOptions = {
+          ...chartDefaults,
+          series: [{
+            name: 'Opportunity',
+            data: [85, 72, 68, 55, 48]
+          }],
+          chart: {
+            ...chartDefaults.chart,
+            type: 'bar',
+            height: 140
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              borderRadius: 2,
+              barHeight: '60%'
+            }
+          },
+          xaxis: {
+            categories: ['SaaS', 'FinTech', 'Legal Tech', 'Hospitality', 'Healthcare'],
+            labels: {
+              style: {
+                colors: 'rgba(255,255,255,0.4)',
+                fontSize: '10px',
+                fontFamily: 'JetBrains Mono, monospace'
+              }
+            },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+          },
+          yaxis: {
+            labels: {
+              style: {
+                colors: 'rgba(255,255,255,0.5)',
+                fontSize: '10px',
+                fontFamily: 'JetBrains Mono, monospace'
+              }
+            }
+          }
+        };
+        new ApexCharts(document.querySelector("#sectorChart"), sectorOptions).render();
+        chartsInitialized[4] = true;
+      }
+
+      if (slideNum === 6 && !chartsInitialized[6]) {
+        // Industries Donut Chart
+        const industriesOptions = {
+          ...chartDefaults,
+          series: [2, 2, 1, 1],
+          chart: {
+            ...chartDefaults.chart,
+            type: 'donut',
+            height: 160
+          },
+          labels: ['FinTech', 'SaaS', 'Legal Tech', 'Hospitality'],
+          colors: ['rgba(255,255,255,0.7)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.35)', 'rgba(255,255,255,0.2)'],
+          stroke: {
+            width: 0
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                size: '70%',
+                labels: {
+                  show: true,
+                  name: {
+                    show: true,
+                    fontSize: '11px',
+                    fontFamily: 'JetBrains Mono, monospace',
+                    color: 'rgba(255,255,255,0.6)'
+                  },
+                  value: {
+                    show: true,
+                    fontSize: '18px',
+                    fontFamily: 'Instrument Serif, serif',
+                    color: '#ffffff'
+                  },
+                  total: {
+                    show: true,
+                    label: 'Total',
+                    fontSize: '10px',
+                    fontFamily: 'JetBrains Mono, monospace',
+                    color: 'rgba(255,255,255,0.4)',
+                    formatter: function (w) {
+                      return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                    }
+                  }
+                }
+              }
+            }
+          },
+          legend: {
+            position: 'right',
+            fontSize: '10px',
+            fontFamily: 'JetBrains Mono, monospace',
+            labels: {
+              colors: 'rgba(255,255,255,0.5)'
+            },
+            markers: {
+              width: 8,
+              height: 8
+            }
+          }
+        };
+        new ApexCharts(document.querySelector("#industriesChart"), industriesOptions).render();
+        chartsInitialized[6] = true;
+      }
+    }
+
+    // Initialize first slide
+    updateSlide(1);
+  </script>
+</body>
+</html>
