@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 
   <script>
@@ -61,7 +60,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 4rem 2rem;
+      padding: 100px 60px 120px 60px; /* top, right, bottom, left - accounts for header and nav */
       opacity: 0;
       visibility: hidden;
       transform: translateX(100px);
@@ -72,7 +71,9 @@
     .slide-content {
       width: 100%;
       max-width: 1200px;
+      max-height: 100%;
       margin: 0 auto;
+      overflow: hidden;
     }
 
     .slide.active {
@@ -350,30 +351,46 @@
       padding: 1.5rem;
     }
 
-    /* ApexCharts Custom Styles */
-    .apexcharts-tooltip {
-      background: #00040C !important;
-      border: 1px solid rgba(255,255,255,0.1) !important;
-      color: #fff !important;
+    /* Static SVG Chart Styles */
+    .svg-chart {
+      width: 100%;
+      height: 100%;
     }
 
-    .apexcharts-tooltip-title {
-      background: rgba(255,255,255,0.05) !important;
-      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    .svg-chart text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      fill: rgba(255,255,255,0.4);
     }
 
-    .apexcharts-xaxis-label, .apexcharts-yaxis-label {
-      fill: rgba(255,255,255,0.4) !important;
+    .svg-chart .chart-line {
+      fill: none;
+      stroke: rgba(255,255,255,0.7);
+      stroke-width: 2;
     }
 
-    .apexcharts-gridline {
-      stroke: rgba(255,255,255,0.06) !important;
+    .svg-chart .chart-area {
+      fill: url(#areaGradient);
     }
+
+    .svg-chart .chart-dot {
+      fill: #ffffff;
+    }
+
+    .svg-chart .chart-bar {
+      fill: rgba(255,255,255,0.5);
+    }
+
+    .svg-chart .grid-line {
+      stroke: rgba(255,255,255,0.06);
+      stroke-width: 1;
+    }
+
 
     /* Responsive */
     @media (max-width: 1024px) {
       .slide {
-        padding: 3rem 2rem;
+        padding: 90px 40px 110px 40px;
       }
 
       .slide-content {
@@ -391,9 +408,13 @@
 
     @media (max-width: 768px) {
       .slide {
-        padding: 5rem 1.5rem 6rem;
+        padding: 80px 20px 100px 20px;
         overflow-y: auto;
         align-items: flex-start;
+      }
+
+      .slide-content {
+        overflow: visible;
       }
 
       .slide-title {
@@ -437,11 +458,14 @@
 
     /* Print Styles for PDF */
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
       html, body {
         overflow: visible !important;
         background: #00040C !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
       }
 
       .deck-container {
@@ -456,9 +480,9 @@
         transform: none !important;
         page-break-after: always;
         page-break-inside: avoid;
-        height: 100vh !important;
         min-height: 100vh;
         overflow: hidden !important;
+        background: #00040C !important;
       }
 
       .slide:last-child {
@@ -470,11 +494,6 @@
       .progress-bar,
       .keyboard-hint {
         display: none !important;
-      }
-
-      @page {
-        size: 16in 9in landscape;
-        margin: 0;
       }
     }
 
@@ -640,7 +659,42 @@
           <div>
             <div class="chart-container mb-4">
               <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">PORTFOLIO GROWTH</div>
-              <div id="growthChart" style="height: 180px;"></div>
+              <svg class="svg-chart" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <!-- Grid lines -->
+                <line class="grid-line" x1="50" y1="20" x2="380" y2="20"/>
+                <line class="grid-line" x1="50" y1="50" x2="380" y2="50"/>
+                <line class="grid-line" x1="50" y1="80" x2="380" y2="80"/>
+                <line class="grid-line" x1="50" y1="110" x2="380" y2="110"/>
+                <!-- Y-axis labels -->
+                <text x="40" y="24" text-anchor="end">15</text>
+                <text x="40" y="54" text-anchor="end">10</text>
+                <text x="40" y="84" text-anchor="end">5</text>
+                <text x="40" y="114" text-anchor="end">0</text>
+                <!-- Area fill -->
+                <path class="chart-area" d="M70,104 L126,92 L182,80 L238,62 L294,44 L350,20 L350,110 L70,110 Z"/>
+                <!-- Line -->
+                <path class="chart-line" d="M70,104 L126,92 L182,80 L238,62 L294,44 L350,20"/>
+                <!-- Data points -->
+                <circle class="chart-dot" cx="70" cy="104" r="4"/>
+                <circle class="chart-dot" cx="126" cy="92" r="4"/>
+                <circle class="chart-dot" cx="182" cy="80" r="4"/>
+                <circle class="chart-dot" cx="238" cy="62" r="4"/>
+                <circle class="chart-dot" cx="294" cy="44" r="4"/>
+                <circle class="chart-dot" cx="350" cy="20" r="4"/>
+                <!-- X-axis labels -->
+                <text x="70" y="135" text-anchor="middle">2019</text>
+                <text x="126" y="135" text-anchor="middle">2020</text>
+                <text x="182" y="135" text-anchor="middle">2021</text>
+                <text x="238" y="135" text-anchor="middle">2022</text>
+                <text x="294" y="135" text-anchor="middle">2023</text>
+                <text x="350" y="135" text-anchor="middle">2024</text>
+              </svg>
             </div>
 
             <div class="grid grid-cols-2 gap-3">
@@ -702,9 +756,45 @@
           </div>
         </div>
 
-        <div class="chart-container mt-6">
-          <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">INVESTMENT OPPORTUNITY BY SECTOR</div>
-          <div id="sectorChart" style="height: 140px;"></div>
+        <div class="mt-6">
+          <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">INVESTMENT OPPORTUNITY BY SECTOR</div>
+          <div class="grid grid-cols-5 gap-3">
+            <div class="bg-white/[0.02] border border-white/[0.06] p-3 text-center">
+              <div class="font-display text-2xl mb-1">85</div>
+              <div class="font-mono text-[9px] text-white/40 tracking-wider">SAAS</div>
+              <div class="mt-2 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                <div class="h-full bg-white/60 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-3 text-center">
+              <div class="font-display text-2xl mb-1">72</div>
+              <div class="font-mono text-[9px] text-white/40 tracking-wider">FINTECH</div>
+              <div class="mt-2 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                <div class="h-full bg-white/50 rounded-full" style="width: 72%"></div>
+              </div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-3 text-center">
+              <div class="font-display text-2xl mb-1">68</div>
+              <div class="font-mono text-[9px] text-white/40 tracking-wider">LEGAL TECH</div>
+              <div class="mt-2 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                <div class="h-full bg-white/40 rounded-full" style="width: 68%"></div>
+              </div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-3 text-center">
+              <div class="font-display text-2xl mb-1">55</div>
+              <div class="font-mono text-[9px] text-white/40 tracking-wider">HOSPITALITY</div>
+              <div class="mt-2 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                <div class="h-full bg-white/30 rounded-full" style="width: 55%"></div>
+              </div>
+            </div>
+            <div class="bg-white/[0.02] border border-white/[0.06] p-3 text-center">
+              <div class="font-display text-2xl mb-1">48</div>
+              <div class="font-mono text-[9px] text-white/40 tracking-wider">HEALTHCARE</div>
+              <div class="mt-2 h-1 bg-white/[0.06] rounded-full overflow-hidden">
+                <div class="h-full bg-white/25 rounded-full" style="width: 48%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -811,7 +901,33 @@
         <div class="grid md:grid-cols-2 gap-6 mt-8">
           <div class="chart-container">
             <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">INDUSTRIES SERVED</div>
-            <div id="industriesChart" style="height: 160px;"></div>
+            <svg class="svg-chart" viewBox="0 0 300 140" preserveAspectRatio="xMidYMid meet">
+              <!-- Donut segments -->
+              <g transform="translate(70,70)">
+                <!-- FinTech - 33% -->
+                <circle r="50" fill="transparent" stroke="rgba(255,255,255,0.7)" stroke-width="20" stroke-dasharray="104.7 314.16" stroke-dashoffset="0" transform="rotate(-90)"/>
+                <!-- SaaS - 33% -->
+                <circle r="50" fill="transparent" stroke="rgba(255,255,255,0.5)" stroke-width="20" stroke-dasharray="104.7 314.16" stroke-dashoffset="-104.7" transform="rotate(-90)"/>
+                <!-- Legal Tech - 17% -->
+                <circle r="50" fill="transparent" stroke="rgba(255,255,255,0.35)" stroke-width="20" stroke-dasharray="52.4 314.16" stroke-dashoffset="-209.4" transform="rotate(-90)"/>
+                <!-- Hospitality - 17% -->
+                <circle r="50" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="20" stroke-dasharray="52.4 314.16" stroke-dashoffset="-261.8" transform="rotate(-90)"/>
+                <!-- Center text -->
+                <text x="0" y="-5" text-anchor="middle" style="fill:rgba(255,255,255,0.4);font-size:9px;">Total</text>
+                <text x="0" y="12" text-anchor="middle" style="fill:#ffffff;font-size:20px;font-family:'Instrument Serif',serif;">6</text>
+              </g>
+              <!-- Legend -->
+              <g transform="translate(160,25)">
+                <rect x="0" y="0" width="10" height="10" fill="rgba(255,255,255,0.7)"/>
+                <text x="16" y="9" style="fill:rgba(255,255,255,0.5);font-size:10px;">FinTech (2)</text>
+                <rect x="0" y="22" width="10" height="10" fill="rgba(255,255,255,0.5)"/>
+                <text x="16" y="31" style="fill:rgba(255,255,255,0.5);font-size:10px;">SaaS (2)</text>
+                <rect x="0" y="44" width="10" height="10" fill="rgba(255,255,255,0.35)"/>
+                <text x="16" y="53" style="fill:rgba(255,255,255,0.5);font-size:10px;">Legal Tech (1)</text>
+                <rect x="0" y="66" width="10" height="10" fill="rgba(255,255,255,0.2)"/>
+                <text x="16" y="75" style="fill:rgba(255,255,255,0.5);font-size:10px;">Hospitality (1)</text>
+              </g>
+            </svg>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-block">
@@ -1035,9 +1151,6 @@
       // Update button states
       prevBtn.disabled = currentSlide === 1;
       nextBtn.disabled = currentSlide === totalSlides;
-
-      // Initialize charts when slide becomes active
-      initChartsForSlide(currentSlide);
     }
 
     // Button navigation
@@ -1084,214 +1197,6 @@
         } else {
           updateSlide('prev');
         }
-      }
-    }
-
-    // ApexCharts Configuration
-    const chartTheme = {
-      mode: 'dark',
-      palette: 'palette1',
-      monochrome: {
-        enabled: true,
-        color: '#ffffff',
-        shadeTo: 'dark',
-        shadeIntensity: 0.65
-      }
-    };
-
-    const chartDefaults = {
-      chart: {
-        background: 'transparent',
-        toolbar: { show: false },
-        animations: {
-          enabled: true,
-          easing: 'easeinout',
-          speed: 800
-        }
-      },
-      theme: chartTheme,
-      grid: {
-        borderColor: 'rgba(255,255,255,0.06)',
-        strokeDashArray: 0
-      },
-      tooltip: {
-        theme: 'dark',
-        style: {
-          fontSize: '11px',
-          fontFamily: 'JetBrains Mono, monospace'
-        }
-      },
-      dataLabels: {
-        style: {
-          fontFamily: 'JetBrains Mono, monospace',
-          fontWeight: 400
-        }
-      }
-    };
-
-    let chartsInitialized = {};
-
-    function initChartsForSlide(slideNum) {
-      if (slideNum === 3 && !chartsInitialized[3]) {
-        // Growth Chart
-        const growthOptions = {
-          ...chartDefaults,
-          series: [{
-            name: 'Ventures',
-            data: [2, 4, 6, 9, 12, 15]
-          }],
-          chart: {
-            ...chartDefaults.chart,
-            type: 'area',
-            height: 180
-          },
-          stroke: {
-            curve: 'smooth',
-            width: 2
-          },
-          fill: {
-            type: 'gradient',
-            gradient: {
-              shadeIntensity: 1,
-              opacityFrom: 0.4,
-              opacityTo: 0.05,
-              stops: [0, 100]
-            }
-          },
-          xaxis: {
-            categories: ['2019', '2020', '2021', '2022', '2023', '2024'],
-            labels: {
-              style: {
-                colors: 'rgba(255,255,255,0.4)',
-                fontSize: '10px',
-                fontFamily: 'JetBrains Mono, monospace'
-              }
-            },
-            axisBorder: { show: false },
-            axisTicks: { show: false }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                colors: 'rgba(255,255,255,0.4)',
-                fontSize: '10px',
-                fontFamily: 'JetBrains Mono, monospace'
-              }
-            }
-          }
-        };
-        new ApexCharts(document.querySelector("#growthChart"), growthOptions).render();
-        chartsInitialized[3] = true;
-      }
-
-      if (slideNum === 4 && !chartsInitialized[4]) {
-        // Sector Chart
-        const sectorOptions = {
-          ...chartDefaults,
-          series: [{
-            name: 'Opportunity',
-            data: [85, 72, 68, 55, 48]
-          }],
-          chart: {
-            ...chartDefaults.chart,
-            type: 'bar',
-            height: 140
-          },
-          plotOptions: {
-            bar: {
-              horizontal: true,
-              borderRadius: 2,
-              barHeight: '60%'
-            }
-          },
-          xaxis: {
-            categories: ['SaaS', 'FinTech', 'Legal Tech', 'Hospitality', 'Healthcare'],
-            labels: {
-              style: {
-                colors: 'rgba(255,255,255,0.4)',
-                fontSize: '10px',
-                fontFamily: 'JetBrains Mono, monospace'
-              }
-            },
-            axisBorder: { show: false },
-            axisTicks: { show: false }
-          },
-          yaxis: {
-            labels: {
-              style: {
-                colors: 'rgba(255,255,255,0.5)',
-                fontSize: '10px',
-                fontFamily: 'JetBrains Mono, monospace'
-              }
-            }
-          }
-        };
-        new ApexCharts(document.querySelector("#sectorChart"), sectorOptions).render();
-        chartsInitialized[4] = true;
-      }
-
-      if (slideNum === 6 && !chartsInitialized[6]) {
-        // Industries Donut Chart
-        const industriesOptions = {
-          ...chartDefaults,
-          series: [2, 2, 1, 1],
-          chart: {
-            ...chartDefaults.chart,
-            type: 'donut',
-            height: 160
-          },
-          labels: ['FinTech', 'SaaS', 'Legal Tech', 'Hospitality'],
-          colors: ['rgba(255,255,255,0.7)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.35)', 'rgba(255,255,255,0.2)'],
-          stroke: {
-            width: 0
-          },
-          plotOptions: {
-            pie: {
-              donut: {
-                size: '70%',
-                labels: {
-                  show: true,
-                  name: {
-                    show: true,
-                    fontSize: '11px',
-                    fontFamily: 'JetBrains Mono, monospace',
-                    color: 'rgba(255,255,255,0.6)'
-                  },
-                  value: {
-                    show: true,
-                    fontSize: '18px',
-                    fontFamily: 'Instrument Serif, serif',
-                    color: '#ffffff'
-                  },
-                  total: {
-                    show: true,
-                    label: 'Total',
-                    fontSize: '10px',
-                    fontFamily: 'JetBrains Mono, monospace',
-                    color: 'rgba(255,255,255,0.4)',
-                    formatter: function (w) {
-                      return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
-                    }
-                  }
-                }
-              }
-            }
-          },
-          legend: {
-            position: 'right',
-            fontSize: '10px',
-            fontFamily: 'JetBrains Mono, monospace',
-            labels: {
-              colors: 'rgba(255,255,255,0.5)'
-            },
-            markers: {
-              width: 8,
-              height: 8
-            }
-          }
-        };
-        new ApexCharts(document.querySelector("#industriesChart"), industriesOptions).render();
-        chartsInitialized[6] = true;
       }
     }
 
