@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SquareOne Capital Proposal | Awasero</title>
+  <meta name="description" content="Awasero Proposal for SquareOne Capital - Website Development & Strategic Partnership">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Instrument Serif', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'brand': {
+              'dark': '#00040C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base Styles */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #00040C;
+      color: #ffffff;
+    }
+
+    /* Slide Container */
+    .deck-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 60px 120px 60px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(100px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-sizing: border-box;
+    }
+
+    .slide-content {
+      width: 100%;
+      max-width: 1200px;
+      max-height: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .slide.prev {
+      transform: translateX(-100px);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+
+    /* Navigation Controls */
+    .nav-controls {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 50;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Slide Typography */
+    .slide-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .slide-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-subtitle {
+      font-family: 'Inter', sans-serif;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* Grid Cards */
+    .info-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem;
+    }
+
+    .info-card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* Large Stat Blocks */
+    .stat-block {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+    }
+
+    /* Client Logo Grid */
+    .client-logo {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+    }
+
+    .client-logo span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* Contact Links */
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-phase {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .timeline-price {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.8);
+      text-align: right;
+      min-width: 100px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 90px 40px 110px 40px;
+      }
+
+      .slide-content {
+        max-width: 100%;
+      }
+
+      .slide-title {
+        font-size: 2.5rem !important;
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 80px 20px 100px 20px;
+        overflow-y: auto;
+        align-items: flex-start;
+      }
+
+      .slide-content {
+        overflow: visible;
+      }
+
+      .slide-title {
+        font-size: 2rem !important;
+      }
+
+      .slide-subtitle {
+        font-size: 0.9rem !important;
+      }
+
+      .nav-controls {
+        bottom: 1rem;
+      }
+
+      .top-bar {
+        padding: 1rem;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+      }
+
+      .stat-block {
+        padding: 1rem;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .timeline-price {
+        text-align: left;
+      }
+    }
+
+    /* Print Styles for PDF */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        overflow: visible !important;
+        background: #00040C !important;
+      }
+
+      .deck-container {
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        min-height: 100vh;
+        overflow: hidden !important;
+        background: #00040C !important;
+      }
+
+      .slide:last-child {
+        page-break-after: auto;
+      }
+
+      .top-bar,
+      .nav-controls,
+      .progress-bar,
+      .keyboard-hint {
+        display: none !important;
+      }
+    }
+
+    /* Keyboard hint */
+    .keyboard-hint {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      z-index: 50;
+    }
+
+    @media (max-width: 768px) {
+      .keyboard-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#00040C] text-white antialiased">
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <a href="/" class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+      <svg class="w-6 h-6" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+      </svg>
+      <span class="font-body text-sm font-medium hidden sm:inline">awasero</span>
+    </a>
+
+    <button class="download-btn" onclick="window.print()">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+      <span>Download PDF</span>
+    </button>
+  </div>
+
+  <!-- Deck Container -->
+  <div class="deck-container" id="deckContainer">
+
+    <!-- Slide 1: Title -->
+    <div class="slide active" data-slide="1">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Proposal for SquareOne Capital</div>
+        <h1 class="slide-title text-5xl md:text-6xl lg:text-7xl mb-6">
+          Building <em>Digital</em><br>Excellence
+        </h1>
+        <p class="slide-subtitle text-lg md:text-xl max-w-2xl mb-10">
+          Website development and strategic partnership proposal from Miami's venture software house.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-block">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">300+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">$500M</div>
+            <div class="stat-label">Client Revenue</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">Ventures Built</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Who We Are -->
+    <div class="slide" data-slide="2">
+      <div class="slide-content">
+        <div class="slide-eyebrow">About Awasero</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Who <em>We Are</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div>
+            <p class="slide-subtitle text-base md:text-lg mb-6">
+              We are a <strong class="text-white">venture software house</strong> based in Miami with 15+ years of experience delivering high-value digital projects for global brands.
+            </p>
+            <p class="slide-subtitle text-base md:text-lg mb-6">
+              Our evolution: From serving Fortune 500 companies as a digital agency to becoming <strong class="text-white">technical co-founders</strong> for early-stage ventures through equity partnerships.
+            </p>
+            <p class="slide-subtitle text-base md:text-lg">
+              We combine enterprise-level execution with startup agility, making us uniquely positioned to serve VC firms and their portfolio companies.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="info-card">
+              <div class="info-card-title">Enterprise Background</div>
+              <div class="info-card-text">Trusted by VISA, Dropbox, Kajabi, PepsiCo, and 200+ global clients</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">Venture Experience</div>
+              <div class="info-card-text">Built 15+ startups as technical co-founders with equity partnerships</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">Local Presence</div>
+              <div class="info-card-text">Headquartered in Miami, FL - just blocks from your Brickell office</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Our Clients -->
+    <div class="slide" data-slide="3">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Track Record</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-4">
+          Our <em>Clients</em>
+        </h2>
+        <p class="slide-subtitle text-base md:text-lg max-w-2xl mb-8">
+          We have provided design & software services to the world's most renowned companies and brands.
+        </p>
+
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div class="client-logo"><span>VISA</span></div>
+          <div class="client-logo"><span>Dropbox</span></div>
+          <div class="client-logo"><span>Kajabi</span></div>
+          <div class="client-logo"><span>Nestl&eacute;</span></div>
+          <div class="client-logo"><span>PepsiCo</span></div>
+          <div class="client-logo"><span>LATAM</span></div>
+          <div class="client-logo"><span>Diageo</span></div>
+          <div class="client-logo"><span>Hyundai</span></div>
+          <div class="client-logo"><span>Bancolombia</span></div>
+          <div class="client-logo"><span>Itau</span></div>
+          <div class="client-logo"><span>ClickFunnels</span></div>
+          <div class="client-logo"><span>FinOps</span></div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div class="stat-block">
+            <div class="stat-value text-3xl">300+</div>
+            <div class="stat-label">Digital Assets</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value text-3xl">2 mo</div>
+            <div class="stat-label">Avg. Delivery</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value text-3xl">$500M</div>
+            <div class="stat-label">Revenue Impact</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Services -->
+    <div class="slide" data-slide="4">
+      <div class="slide-content">
+        <div class="slide-eyebrow">What We Do</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Our <em>Services</em>
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Strategy</div>
+            <div class="info-card-text mt-2">
+              Website audit, competitor analysis, customer research, growth strategy, user journey mapping, implementation planning
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Design</div>
+            <div class="info-card-text mt-2">
+              Design systems, wireframes, UI/UX design, prototyping, CRO optimization, accessibility, responsive design
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Development</div>
+            <div class="info-card-text mt-2">
+              Web development, performance optimization, A/B testing, analytics, integrations, ongoing maintenance
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 p-5 bg-white/[0.02] border border-white/[0.06]">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="font-mono text-xs text-white/40 tracking-wider">TECHNOLOGIES</div>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">React / Next.js</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">TypeScript</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Node.js</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Webflow</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">AWS / Vercel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Case Study - Kajabi -->
+    <div class="slide" data-slide="5">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Case Study</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          <em>Kajabi</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <p class="slide-subtitle text-base md:text-lg mb-6">
+              A complete online business platform for serious entrepreneurs, experts, and influencers. Build, market, and sell your online courses, membership sites and digital products.
+            </p>
+
+            <div class="mb-6">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">WHAT WE DID</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Web Strategy</span>
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Web Design</span>
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Web Development</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <div class="stat-block">
+                <div class="stat-value text-2xl">2+</div>
+                <div class="stat-label">Years</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-2xl">100K+</div>
+                <div class="stat-label">Daily Visitors</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-2xl">$10M</div>
+                <div class="stat-label">Monthly Ads</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6 flex items-center justify-center">
+            <div class="text-center">
+              <div class="font-display text-4xl mb-2 opacity-60">Kajabi</div>
+              <div class="font-mono text-[10px] text-white/30 tracking-wider">SAAS PLATFORM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Case Study - Dropbox -->
+    <div class="slide" data-slide="6">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Case Study</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          <em>Dropbox</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <p class="slide-subtitle text-base md:text-lg mb-6">
+              Collaborated with Dropbox's marketing team to develop effective content and assets that resonated with their target audience, leveraging various marketing channels to reach and convert potential customers.
+            </p>
+
+            <div class="mb-6">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">WHAT WE DID</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Landing Pages</span>
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Design System</span>
+                <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Marketing Assets</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <div class="stat-block">
+                <div class="stat-value text-2xl">6+</div>
+                <div class="stat-label">Months</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-2xl">50+</div>
+                <div class="stat-label">Landing Pages</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-2xl">$2M</div>
+                <div class="stat-label">Investment</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/[0.02] border border-white/[0.06] p-6 flex items-center justify-center">
+            <div class="text-center">
+              <div class="font-display text-4xl mb-2 opacity-60">Dropbox</div>
+              <div class="font-mono text-[10px] text-white/30 tracking-wider">CLOUD STORAGE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: The Proposal -->
+    <div class="slide" data-slide="7">
+      <div class="slide-content text-center">
+        <div class="slide-eyebrow">Our Proposal</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          Get Ready to Work<br>With a Team That<br>Delivers <em>Excellence</em>
+        </h2>
+        <p class="slide-subtitle text-lg md:text-xl max-w-2xl mx-auto">
+          A modern, conversion-focused website that reflects SquareOne Capital's position as a leading fintech-focused venture capital firm.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 8: Website Scope -->
+    <div class="slide" data-slide="8">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Website Development</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          Project <em>Scope</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="space-y-4">
+            <div class="info-card">
+              <div class="info-card-title">Strategy & Audit</div>
+              <div class="info-card-text mt-2">
+                Current site analysis, competitor research, content strategy, user journey mapping, SEO opportunities
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">Design</div>
+              <div class="info-card-text mt-2">
+                Modern visual design aligned with brand, responsive layouts, portfolio showcase, team section, news/insights
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">Development</div>
+              <div class="info-card-text mt-2">
+                High-performance build, CMS integration for portfolio updates, contact forms, analytics implementation
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-title">SEO & Launch</div>
+              <div class="info-card-text mt-2">
+                On-page SEO, technical optimization, performance tuning, launch support, documentation
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-3">PAGES INCLUDED</div>
+            <div class="space-y-2 mb-6">
+              <div class="flex justify-between items-center py-2 border-b border-white/[0.06]">
+                <span class="font-body text-sm">Homepage</span>
+                <span class="font-mono text-xs text-white/40">Hero, stats, portfolio preview</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/[0.06]">
+                <span class="font-body text-sm">Portfolio / Companies</span>
+                <span class="font-mono text-xs text-white/40">Filterable grid, detail pages</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/[0.06]">
+                <span class="font-body text-sm">Team</span>
+                <span class="font-mono text-xs text-white/40">Leadership profiles</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/[0.06]">
+                <span class="font-body text-sm">News / Insights</span>
+                <span class="font-mono text-xs text-white/40">Blog with categories</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-white/[0.06]">
+                <span class="font-body text-sm">About</span>
+                <span class="font-mono text-xs text-white/40">Mission, values, thesis</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="font-body text-sm">Contact</span>
+                <span class="font-mono text-xs text-white/40">Form, office location</span>
+              </div>
+            </div>
+
+            <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">BILINGUAL</div>
+              <div class="font-body text-sm text-white/60">Full English & Spanish support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: Timeline & Investment -->
+    <div class="slide" data-slide="9">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Investment</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          Timeline & <em>Investment</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-4">PROJECT TIMELINE</div>
+
+            <div class="timeline-item">
+              <div class="timeline-phase">Week 1-2</div>
+              <div class="timeline-content">
+                <div class="timeline-title">Strategy & Discovery</div>
+                <div class="timeline-desc">Audit, research, content strategy</div>
+              </div>
+              <div class="timeline-price">$3,200</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-phase">Week 3-4</div>
+              <div class="timeline-content">
+                <div class="timeline-title">UX & Visual Design</div>
+                <div class="timeline-desc">Wireframes, UI design, prototypes</div>
+              </div>
+              <div class="timeline-price">$4,800</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-phase">Week 5-7</div>
+              <div class="timeline-content">
+                <div class="timeline-title">Development</div>
+                <div class="timeline-desc">Build, CMS, integrations</div>
+              </div>
+              <div class="timeline-price">$5,600</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-phase">Week 8</div>
+              <div class="timeline-content">
+                <div class="timeline-title">Testing & Launch</div>
+                <div class="timeline-desc">QA, SEO, go-live support</div>
+              </div>
+              <div class="timeline-price">$1,400</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="stat-block mb-4">
+              <div class="stat-value">$15,000</div>
+              <div class="stat-label">Total Investment</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="stat-block">
+                <div class="stat-value text-2xl">8</div>
+                <div class="stat-label">Weeks</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value text-2xl">$85/hr</div>
+                <div class="stat-label">Additional Hours</div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-2">OPTIONAL ADD-ONS</div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-white/60">Monthly Maintenance</span>
+                  <span class="text-white/80">$600/mo</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-white/60">Content Updates (5hrs)</span>
+                  <span class="text-white/80">$400/mo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 10: Strategic Partnership -->
+    <div class="slide" data-slide="10">
+      <div class="slide-content text-center">
+        <div class="slide-eyebrow">Beyond the Website</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          A Strategic<br><em>Partnership</em><br>Opportunity
+        </h2>
+        <p class="slide-subtitle text-lg md:text-xl max-w-2xl mx-auto">
+          Beyond website development, we see an opportunity to partner with SquareOne Capital to provide technical excellence for your portfolio companies.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 11: Partnership Model -->
+    <div class="slide" data-slide="11">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Partnership Model</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-6">
+          Portfolio <em>Support</em>
+        </h2>
+
+        <p class="slide-subtitle text-base md:text-lg max-w-2xl mb-8">
+          As a venture software house, we partner with non-technical founders to build their products. SquareOne's fintech portfolio companies could benefit from our technical co-founder model.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Technical Co-Founder</div>
+            <div class="info-card-text mt-2">We act as the CTO and engineering team for portfolio companies, building from MVP to scale.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">Equity Partnership</div>
+            <div class="info-card-text mt-2">We work for equity (10-30%), aligning our incentives with founder success. Zero upfront cost for startups.</div>
+          </div>
+
+          <div class="info-card">
+            <div class="w-12 h-12 bg-white/[0.06] flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <div class="info-card-title">De-Risk Investments</div>
+            <div class="info-card-text mt-2">Technical due diligence and proven execution reduce startup failure risk for your investments.</div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-5 bg-white/[0.02] border border-white/[0.06]">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="font-mono text-xs text-white/40 tracking-wider">OUR FOCUS SECTORS</div>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">FinTech</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">SaaS</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Legal Tech</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">Hospitality</span>
+              <span class="px-3 py-1 bg-white/[0.04] border border-white/[0.08] font-body text-sm">EdTech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: Why Partner -->
+    <div class="slide" data-slide="12">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Why Partner With Us</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-8">
+          The <em>Alignment</em>
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-4">SQUAREONE CAPITAL</div>
+            <div class="space-y-3">
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">Fintech-focused with 40+ portfolio companies</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">"Conscious investing" supporting Latin entrepreneurs</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">Miami HQ with global reach (US, LATAM, Europe, Asia)</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">Early-stage focus requiring technical validation</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="font-mono text-[9px] text-white/30 tracking-wider mb-4">AWASERO</div>
+            <div class="space-y-3">
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">FinTech experience with VISA, Bancolombia, Itau</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">Venezuelan founders supporting Latin ecosystem</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">Miami HQ (800 Brickell Ave) + Caracas engineering</div>
+              </div>
+              <div class="p-4 bg-white/[0.02] border border-white/[0.06]">
+                <div class="font-body text-sm">15+ ventures built from concept to scale</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-3 gap-4">
+          <div class="stat-block">
+            <div class="stat-value text-2xl">87%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value text-2xl">$12M</div>
+            <div class="stat-label">Value Created</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-value text-2xl">3x</div>
+            <div class="stat-label">Faster to Market</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: Contact -->
+    <div class="slide" data-slide="13">
+      <div class="slide-content">
+        <div class="slide-eyebrow">Get in Touch</div>
+        <h2 class="slide-title text-4xl md:text-5xl lg:text-6xl mb-4">
+          Let's <em>Connect</em>
+        </h2>
+        <p class="slide-subtitle text-base md:text-lg max-w-xl mb-10">
+          Ready to discuss this proposal? We'd love to hear from you.
+        </p>
+
+        <div class="space-y-4 max-w-lg">
+          <a href="mailto:carlos@awasero.com" class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">EMAIL</div>
+              <div class="font-body text-sm text-white">carlos@awasero.com</div>
+            </div>
+          </a>
+
+          <a href="https://awasero.com" target="_blank" class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">WEBSITE</div>
+              <div class="font-body text-sm text-white">awasero.com</div>
+            </div>
+          </a>
+
+          <div class="contact-link">
+            <div class="contact-icon">
+              <svg class="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[9px] text-white/30 tracking-wider mb-1">LOCATION</div>
+              <div class="font-body text-sm text-white">800 Brickell Ave, Miami, FL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 flex items-center gap-4">
+          <svg class="w-10 h-10 opacity-40" viewBox="0 0 560 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96.7567 304.612C98.1735 304.751 99.3467 305.76 99.686 307.134C100.025 308.506 99.4555 309.939 98.2647 310.715C95.362 312.602 92.2979 314.388 89.1599 316.021C77.6046 322.034 65.6934 324.958 52.7438 324.958C44.8247 324.958 37.4435 323.925 30.8055 321.885C24.4025 319.923 18.7912 317.07 14.1254 313.404C9.60771 309.853 6.19748 305.656 3.70085 300.573C1.24598 295.577 0 289.641 0 282.928C0 272.001 2.97664 262.561 9.09831 254.065C15.5754 245.081 24.4932 237.176 35.6016 230.572C46.1764 224.29 58.5578 219.012 72.4049 214.881C73.8217 214.464 75.3468 215.007 76.1659 216.225C76.985 217.446 76.9067 219.053 75.9701 220.186C66.5653 231.571 61.7983 245.188 61.7983 260.661C61.7983 272.815 64.8925 283.102 70.9931 291.237C74.9921 296.574 82.7025 303.226 96.7567 304.612ZM217.506 302.807C218.189 303.718 218.359 304.908 217.956 305.968C217.555 307.028 216.634 307.813 215.517 308.052L147.714 322.505C147.476 322.555 147.238 322.58 147.005 322.58C145.512 322.58 144.158 321.586 143.761 320.098L134.97 287.12C134.896 286.843 134.859 286.557 134.859 286.269V163.636C134.859 146.63 129.215 133.102 118.08 123.425C107.784 114.475 93.09 109.882 73.1618 109.387C71.5259 109.348 70.1602 108.144 69.9223 106.537C69.6867 104.931 70.6511 103.388 72.2064 102.886C77.8042 101.078 83.6973 99.5413 89.7243 98.3229C100.193 96.2027 111.354 95.1242 122.894 95.1242C139.632 95.1242 153.418 96.9514 163.874 100.551C173.778 103.96 181.592 108.755 187.1 114.804C192.7 120.95 196.461 128.19 198.596 136.937C200.914 146.426 202.091 157.224 202.091 169.031V282.264L217.506 302.807ZM364.071 293.137C367.823 303.733 373.079 312.161 379.692 318.192C380.813 319.215 381.102 320.859 380.393 322.197C379.802 323.31 378.646 323.98 377.418 323.98C377.172 323.98 376.92 323.953 376.673 323.898C369.216 322.212 361.954 319.939 355.092 317.134C338.112 310.194 322.676 299.754 309.213 286.109C293.907 270.186 282.153 251.571 274.246 230.749C266.292 209.796 262.259 186.618 262.259 161.854C262.259 137.1 266.329 113.892 274.357 92.8661C282.343 71.947 294.113 53.2361 309.336 37.2471C322.412 23.9869 337.703 13.7658 354.83 6.8244C361.711 4.03789 368.981 1.77124 376.434 0.0880901C377.916 -0.259997 379.445 0.447475 380.154 1.78694C380.862 3.12415 380.576 4.76832 379.455 5.78951C372.862 11.8046 367.643 20.1917 363.942 30.7151C356.491 51.8975 352.869 94.7915 352.869 161.858C352.869 228.925 356.535 271.87 364.071 293.137ZM548.01 92.7298C555.964 113.683 559.998 136.94 560 161.857C560 186.622 555.967 209.801 548.013 230.752C540.106 251.577 528.311 270.229 512.957 286.2C499.539 299.947 484.222 310.392 467.407 317.252C460.725 319.981 453.646 322.198 446.364 323.849C446.113 323.906 445.861 323.934 445.614 323.934C444.386 323.934 443.233 323.265 442.642 322.152C441.933 320.817 442.217 319.173 443.336 318.15C449.73 312.299 454.804 304.21 458.415 294.106C465.796 273.458 469.387 230.201 469.387 161.856C469.387 93.5119 465.796 50.2897 458.411 29.7179C454.8 19.6634 449.737 11.6106 443.364 5.78757C442.242 4.76411 441.956 3.12212 442.665 1.785C443.373 0.447871 444.901 -0.248406 446.382 0.0834106C453.729 1.7411 460.891 3.96887 467.668 6.70538C484.623 13.5676 499.874 23.8716 513.003 37.3294C528.333 53.2749 540.106 71.9103 548.01 92.7298Z" fill="white"/>
+          </svg>
+          <div>
+            <div class="font-body text-sm font-medium">Awasero</div>
+            <div class="font-mono text-[10px] text-white/40">Venture Software House</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" disabled>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">13</span></span>
+    <button class="nav-btn" id="nextBtn">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Keyboard Hint -->
+  <div class="keyboard-hint">
+    Use arrow keys or space to navigate
+  </div>
+
+  <script>
+    // Deck Navigation
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 1;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const progressBar = document.getElementById('progressBar');
+
+    totalSlidesEl.textContent = totalSlides;
+
+    function updateSlide(direction) {
+      const prevSlideNum = currentSlide;
+
+      if (direction === 'next' && currentSlide < totalSlides) {
+        currentSlide++;
+      } else if (direction === 'prev' && currentSlide > 1) {
+        currentSlide--;
+      } else if (typeof direction === 'number') {
+        currentSlide = direction;
+      }
+
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index + 1 === currentSlide) {
+          slide.classList.add('active');
+        } else if (index + 1 < currentSlide) {
+          slide.classList.add('prev');
+        }
+      });
+
+      // Update counter
+      currentSlideEl.textContent = currentSlide;
+
+      // Update progress bar
+      const progress = (currentSlide / totalSlides) * 100;
+      progressBar.style.width = progress + '%';
+
+      // Update button states
+      prevBtn.disabled = currentSlide === 1;
+      nextBtn.disabled = currentSlide === totalSlides;
+    }
+
+    // Button navigation
+    prevBtn.addEventListener('click', () => updateSlide('prev'));
+    nextBtn.addEventListener('click', () => updateSlide('next'));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        updateSlide('next');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        updateSlide('prev');
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        updateSlide(1);
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        updateSlide(totalSlides);
+      }
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          updateSlide('next');
+        } else {
+          updateSlide('prev');
+        }
+      }
+    }
+
+    // Initialize first slide
+    updateSlide(1);
+  </script>
+</body>
+</html>
